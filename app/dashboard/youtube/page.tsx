@@ -48,7 +48,9 @@ export default async function Page(props: {
   return (
     <div className='w-full'>
       <div className='flex w-full items-center justify-between'>
-        <h1 className={`${lusitana.className} text-2xl`}>YouTube</h1>
+        <h1 className={`${lusitana.className} text-2xl text-gray-50`}>
+          YouTube
+        </h1>
       </div>
 
       <div className='mt-4 flex items-center justify-between gap-2 md:mt-8'>
@@ -66,8 +68,8 @@ export default async function Page(props: {
       {/* <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}> */}
       <div className='mt-6 flow-root'>
         <div className='inline-block min-w-full align-middle'>
-          <div className='rounded-lg bg-gray-50 p-2 md:pt-0'>
-            <table className='hidden min-w-full text-gray-900 md:table'>
+          <div className='rounded-lg bg-gray-800 p-2 md:pt-0'>
+            <table className='hidden min-w-full text-gray-50 md:table'>
               <thead className='rounded-lg text-left text-sm font-normal'>
                 <tr>
                   <th scope='col' className='px-4 py-5 font-medium sm:pl-6'>
@@ -86,7 +88,7 @@ export default async function Page(props: {
                 {videos?.map((video) => (
                   <tr
                     key={video.id}
-                    className='w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'
+                    className='w-full bg-gray-900 border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'
                   >
                     <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                       {video.uploaded}
@@ -101,13 +103,13 @@ export default async function Page(props: {
                       <div className='flex justify-end gap-3'>
                         <Link
                           href={`/dashboard/youtube/${video.id}/edit`}
-                          className='rounded-md border p-2 hover:bg-gray-100'
+                          className='rounded-md border p-2 hover:bg-gray-700'
                         >
                           <PencilIcon className='w-5' />
                         </Link>
 
                         <form action={deleteVideo.bind(null, video.id)}>
-                          <button className='rounded-md border p-2 hover:bg-gray-100'>
+                          <button className='rounded-md border p-2 hover:bg-gray-700'>
                             <span className='sr-only'>Delete</span>
 
                             <TrashIcon className='w-5' />
@@ -115,7 +117,7 @@ export default async function Page(props: {
                         </form>
 
                         <Link href={`/dashboard/youtube/${video.videoid}`}>
-                          <button className='flex rounded-md border p-2 hover:bg-gray-100'>
+                          <button className='flex rounded-md border p-2 hover:bg-gray-700'>
                             <span className=''>Trainers</span>
                           </button>
                         </Link>

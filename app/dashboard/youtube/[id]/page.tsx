@@ -39,7 +39,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     <div className='w-full'>
       <div className='flex w-full items-center justify-between'>
         <h1
-          className={`${lusitana.className} text-2xl`}
+          className={`${lusitana.className} text-2xl text-gray-50`}
         >{`YouTube / ${videoid}`}</h1>
       </div>
 
@@ -58,8 +58,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
       {/* <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}> */}
       <div className='mt-6 flow-root'>
         <div className='inline-block min-w-full align-middle'>
-          <div className='rounded-lg bg-gray-50 p-2 md:pt-0'>
-            <table className='hidden min-w-full text-gray-900 md:table'>
+          <div className='rounded-lg bg-gray-800 p-2 md:pt-0'>
+            <table className='hidden min-w-full text-gray-50 md:table'>
               <thead className='rounded-lg text-left text-sm font-normal'>
                 <tr>
                   <th scope='col' className='px-4 py-5 font-medium sm:pl-6'>
@@ -78,7 +78,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                 {trainers?.map((trainer) => (
                   <tr
                     key={trainer.title}
-                    className='w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'
+                    className='w-full bg-gray-900 border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'
                   >
                     <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                       <a
@@ -104,7 +104,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                       <div className='flex justify-end gap-3'>
                         <Link
                           href={`/dashboard/youtube/${videoid}/${trainer.id}/edit`}
-                          className='rounded-md border p-2 hover:bg-gray-100'
+                          className='rounded-md border p-2 hover:bg-gray-700'
                         >
                           <PencilIcon className='w-5' />
                         </Link>
@@ -112,7 +112,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                         <form
                           action={deleteTrainer.bind(null, videoid, trainer.id)}
                         >
-                          <button className='rounded-md border p-2 hover:bg-gray-100'>
+                          <button className='rounded-md border p-2 hover:bg-gray-700'>
                             <span className='sr-only'>Delete</span>
                             <TrashIcon className='w-5' />
                           </button>
