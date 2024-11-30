@@ -30,7 +30,8 @@ export default function Page() {
         ]}
       />
 
-      <form action={formAction}>
+      {/* <form action={formAction}> */}
+      <form>
         {[0, 1, 2].map((i) => (
           <div key={i} className='rounded-md bg-gray-800 p-4 md:p-6'>
             <div className='mb-4'>
@@ -66,7 +67,7 @@ export default function Page() {
                       (i == 2 && 'Enter a video ID') ||
                       ''
                     }
-                    className='bg-gray-900 peer block w-full rounded-md border border-gray-700 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
+                    className='bg-gray-900 text-gray-100 peer block w-full rounded-md border border-gray-700 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
                     // required
                   />
 

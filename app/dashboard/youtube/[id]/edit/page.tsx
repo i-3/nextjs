@@ -60,7 +60,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
         ]}
       />
 
-      <form action={updateVideoWithID}>
+      {/* <form action={updateVideoWithID}> */}
+      <form>
         {[0, 1, 2].map((i) => (
           <div key={i} className='rounded-md bg-gray-800 p-4 md:p-6'>
             <div className='mb-4'>

@@ -17,7 +17,8 @@ export default function Form({ videoid }: { videoid: string }) {
   const [state, formAction] = useActionState(createTrainer, initialState);
 
   return (
-    <form action={formAction}>
+    // <form action={formAction}>
+    <form>
       {[0, 1, 2, 3].map((i) => (
         <div key={i} className='rounded-md bg-gray-800 p-4 md:p-6'>
           <div className='mb-4'>
@@ -58,7 +59,7 @@ export default function Form({ videoid }: { videoid: string }) {
                     (i == 3 && 'Enter a stop') ||
                     ''
                   }
-                  className='bg-gray-900 peer block w-full rounded-md border border-gray-700 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
+                  className='bg-gray-900 text-gray-100 peer block w-full rounded-md border border-gray-700 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
                   // required
                 />
                 <CurrencyDollarIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />

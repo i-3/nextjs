@@ -109,14 +109,14 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                           <PencilIcon className='w-5' />
                         </Link>
 
-                        <form
+                        {/* <form
                           action={deleteTrainer.bind(null, videoid, trainer.id)}
-                        >
-                          <button className='rounded-md border p-2 hover:bg-gray-700'>
-                            <span className='sr-only'>Delete</span>
-                            <TrashIcon className='w-5' />
-                          </button>
-                        </form>
+                        > */}
+                        <button className='rounded-md border p-2 hover:bg-gray-700'>
+                          <span className='sr-only'>Delete</span>
+                          <TrashIcon className='w-5' />
+                        </button>
+                        {/* </form> */}
                       </div>
                     </td>
                   </tr>
