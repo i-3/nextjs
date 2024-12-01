@@ -11,6 +11,7 @@ import { sql } from '@vercel/postgres';
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
   const videoid = params.id;
+  const loop = 9;
 
   type Trainer = {
     id: string;
@@ -85,7 +86,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                         href={
                           'https://www.youtube.com/watch' +
                           `?v=${videoid}` +
-                          `&loop=9` +
+                          `&loop=${loop}` +
                           `&start=${trainer.start}` +
                           `&end=${trainer.stop}`
                         }
