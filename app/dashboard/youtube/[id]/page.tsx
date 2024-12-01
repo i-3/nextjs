@@ -85,7 +85,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                         href={
                           'https://www.youtube.com/watch' +
                           `?v=${videoid}` +
-                          `&loop=10` +
+                          `&loop=9` +
                           `&start=${trainer.start}` +
                           `&end=${trainer.stop}`
                         }
