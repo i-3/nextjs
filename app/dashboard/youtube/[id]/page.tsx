@@ -6,7 +6,8 @@ import { lusitana } from '@/app/ui/fonts';
 import Link from 'next/link';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { deleteTrainer } from '@/app/lib/actions';
-import { sql } from '@vercel/postgres';
+// import { sql } from '@vercel/postgres';
+const pool = require('../../../../db');
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -25,7 +26,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   async function fetchTrainers() {
     try {
       const data =
-        await sql<Trainer>`SELECT * FROM trainers WHERE videoid = ${videoid}`;
+        await pool.query(`SELECT * FROM trainers WHERE videoid = ${videoid}`);
 
       return data.rows;
     } catch (error) {
@@ -76,7 +77,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
               </thead>
 
               <tbody className='bg-white'>
-                {trainers?.map((trainer) => (
+                {trainers?.map((trainer: any) => (
                   <tr
                     key={trainer.title}
                     className='w-full bg-gray-900 border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'

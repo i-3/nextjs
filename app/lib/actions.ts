@@ -3,7 +3,8 @@
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { z } from 'zod';
-import { sql } from '@vercel/postgres';
+// import { sql } from '@vercel/postgres';
+const pool = require('../../db');
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
@@ -108,10 +109,10 @@ export async function createTrainer(prevState: State__, formData: FormData) {
   const date = new Date().toISOString().split('T')[0];
 
   try {
-    await sql`
+    await pool.query(`
       INSERT INTO trainers (videoid, title, start, stop, date)
       VALUES (${videoid}, ${title}, ${start}, ${stop}, ${date})
-    `;
+    `);
   } catch (error) {
     return {
       error,
@@ -132,11 +133,11 @@ export async function updateTrainer(ID: string, formData: FormData) {
   });
 
   try {
-    await sql`
+    await pool.query(`
         UPDATE trainers
         SET videoid = ${videoid}, title = ${title}, start = ${start}, stop = ${stop}
         WHERE id = ${ID}
-      `;
+      `);
   } catch (error) {
     return {
       error,
@@ -152,7 +153,7 @@ export async function deleteTrainer(videoid: string, id: string) {
   // throw new Error('Failed to Delete Invoice');
 
   try {
-    await sql`DELETE FROM trainers WHERE id = ${id}`;
+    await pool.query(`DELETE FROM trainers WHERE id = ${id}`);
 
     revalidatePath(`/dashboard/youtube/${videoid}`);
 
@@ -185,10 +186,10 @@ export async function createVideo(prevState: State_, formData: FormData) {
   const date = new Date().toISOString().split('T')[0];
 
   try {
-    await sql`
+    await pool.query(`
       INSERT INTO videos (uploaded, title, videoid, date)
       VALUES (${uploaded}, ${title}, ${videoid}, ${date})
-    `;
+    `);
   } catch (error) {
     return {
       error,
@@ -208,11 +209,11 @@ export async function updateVideo(id: string, formData: FormData) {
   });
 
   try {
-    await sql`
+    await pool.query(`
         UPDATE videos
         SET uploaded = ${uploaded}, title = ${title}, videoid = ${videoid}
         WHERE id = ${id}
-      `;
+      `);
   } catch (error) {
     return {
       error,
@@ -228,7 +229,7 @@ export async function deleteVideo(id: string) {
   // throw new Error('Failed to Delete Invoice');
 
   try {
-    await sql`DELETE FROM videos WHERE id = ${id}`;
+    await pool.query(`DELETE FROM videos WHERE id = ${id}`);
 
     // revalidatePath('/dashboard/youtube');
     return { message: 'Deleted Video.' };
@@ -259,10 +260,10 @@ export async function createInvoice(prevState: State, formData: FormData) {
   const date = new Date().toISOString().split('T')[0];
 
   try {
-    await sql`
+    await pool.query(`
       INSERT INTO invoices (customer_id, amount, status, date)
       VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
-    `;
+    `);
   } catch (error) {
     return {
       error,
@@ -284,11 +285,11 @@ export async function updateInvoice(id: string, formData: FormData) {
   const amountInCents = amount * 100;
 
   try {
-    await sql`
+    await pool.query(`
         UPDATE invoices
         SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
         WHERE id = ${id}
-      `;
+      `);
   } catch (error) {
     return {
       error,
@@ -304,7 +305,8 @@ export async function deleteInvoice(id: string) {
   // throw new Error('Failed to Delete Invoice');
 
   try {
-    await sql`DELETE FROM invoices WHERE id = ${id}`;
+    await pool.query(`DELETE FROM invoices WHERE id = ${id}`);
+
     revalidatePath('/dashboard/invoices');
     return { message: 'Deleted Invoice.' };
   } catch (error) {

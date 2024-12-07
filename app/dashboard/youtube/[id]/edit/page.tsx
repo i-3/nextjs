@@ -10,7 +10,8 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-import { sql } from '@vercel/postgres';
+// import { sql } from '@vercel/postgres';
+const pool = require('../../../../../db');
 import { updateVideo } from '@/app/lib/actions';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
@@ -24,9 +25,9 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
   async function fetchVideoByID(id: string) {
     try {
-      const data = await sql<VideoForm>`
+      const data = await pool.query(`
         SELECT * FROM videos WHERE id = ${id};
-      `;
+      `);
 
       return data.rows[0];
     } catch (error) {

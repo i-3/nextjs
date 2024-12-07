@@ -7,7 +7,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { deleteVideo } from '@/app/lib/actions';
-import { sql } from '@vercel/postgres';
+// import { sql } from '@vercel/postgres';
+const pool = require('../../../db');
 
 export const metadata: Metadata = {
   title: 'SmartAlex',
@@ -34,7 +35,7 @@ export default async function Page(props: {
 
   async function fetchVideos() {
     try {
-      const data = await sql<Video>`SELECT * FROM videos`;
+      const data = await pool.query(`SELECT * FROM videos`);
 
       return data.rows;
     } catch (error) {
@@ -85,7 +86,7 @@ export default async function Page(props: {
               </thead>
 
               <tbody className='bg-white'>
-                {videos?.map((video) => (
+                {videos?.map((video: any) => (
                   <tr
                     key={video.id}
                     className='w-full bg-gray-900 border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'

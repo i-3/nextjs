@@ -3,7 +3,8 @@ import { notFound } from 'next/navigation';
 import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-import { sql } from '@vercel/postgres';
+// import { sql } from '@vercel/postgres';
+const pool = require('../../../../../../db');
 import { updateTrainer } from '@/app/lib/actions';
 
 export default async function Page(props: { params: Promise<{ ID: string }> }) {
@@ -18,9 +19,9 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
 
   async function fetchTrainerByID(ID: string) {
     try {
-      const data = await sql<TrainerForm>`
+      const data = await pool.query(`
         SELECT * FROM trainers WHERE id = ${ID};
-      `;
+      `);
 
       return data.rows[0];
     } catch (error) {
