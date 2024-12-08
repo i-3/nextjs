@@ -20,7 +20,7 @@ export default function SideNav() {
       <div className='flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2'>
         <NavLinks />
 
-        <div className='hidden h-auto w-full grow rounded-md bg-gray-800 md:block'></div>
+        <div className='hidden h-auto w-full grow rounded-md bg-neutral-800 md:block'></div>
 
         <form
           action={async () => {
@@ -31,7 +31,7 @@ export default function SideNav() {
           <button
             className={clsx(
               'flex h-[48px] w-full grow items-center justify-center',
-              'gap-2 rounded-md bg-gray-800 text-gray-50 p-3 text-sm font-medium',
+              'gap-2 rounded-md bg-neutral-800 text-neutral-300 p-3 text-sm font-medium',
               'hover:bg-gray-600 hover:text-blue-600 md:flex-none md:justify-center md:p-2 md:px-3'
             )}
           >

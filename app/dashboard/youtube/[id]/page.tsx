@@ -25,8 +25,9 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
   async function fetchTrainers() {
     try {
-      const data =
-        await pool.query(`SELECT * FROM trainers WHERE videoid = '${videoid}'`);
+      const data = await pool.query(
+        `SELECT * FROM trainers WHERE videoid = '${videoid}'`
+      );
 
       return data.rows;
     } catch (error) {
@@ -41,7 +42,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     <div className='w-full'>
       <div className='flex w-full items-center justify-between'>
         <h1
-          className={`${lusitana.className} text-2xl text-gray-50`}
+          className={`${lusitana.className} text-2xl text-neutral-300`}
         >{`YouTube / ${videoid}`}</h1>
       </div>
 
@@ -60,8 +61,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
       {/* <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}> */}
       <div className='mt-6 flow-root'>
         <div className='inline-block min-w-full align-middle'>
-          <div className='rounded-lg bg-gray-800 p-2 md:pt-0'>
-            <table className='hidden min-w-full text-gray-50 md:table'>
+          <div className='rounded-lg bg-neutral-800 p-2 md:pt-0'>
+            <table className='hidden min-w-full text-neutral-300 md:table'>
               <thead className='rounded-lg text-left text-sm font-normal'>
                 <tr>
                   <th scope='col' className='px-4 py-5 font-medium sm:pl-6'>
@@ -80,7 +81,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                 {trainers?.map((trainer: any) => (
                   <tr
                     key={trainer.title}
-                    className='w-full bg-gray-900 border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'
+                    className='w-full bg-neutral-900 border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'
                   >
                     <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                       <a
@@ -114,10 +115,10 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                         <form
                           action={deleteTrainer.bind(null, videoid, trainer.id)}
                         >
-                        <button className='rounded-md border p-2 hover:bg-gray-700'>
-                          <span className='sr-only'>Delete</span>
-                          <TrashIcon className='w-5' />
-                        </button>
+                          <button className='rounded-md border p-2 hover:bg-gray-700'>
+                            <span className='sr-only'>Delete</span>
+                            <TrashIcon className='w-5' />
+                          </button>
                         </form>
                       </div>
                     </td>
