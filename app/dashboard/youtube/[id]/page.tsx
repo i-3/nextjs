@@ -26,7 +26,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   async function fetchTrainers() {
     try {
       const data =
-        await pool.query(`SELECT * FROM trainers WHERE videoid = ${videoid}`);
+        await pool.query(`SELECT * FROM trainers WHERE videoid = '${videoid}'`);
 
       return data.rows;
     } catch (error) {
@@ -111,14 +111,14 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                           <PencilIcon className='w-5' />
                         </Link>
 
-                        {/* <form
+                        <form
                           action={deleteTrainer.bind(null, videoid, trainer.id)}
-                        > */}
+                        >
                         <button className='rounded-md border p-2 hover:bg-gray-700'>
                           <span className='sr-only'>Delete</span>
                           <TrashIcon className='w-5' />
                         </button>
-                        {/* </form> */}
+                        </form>
                       </div>
                     </td>
                   </tr>

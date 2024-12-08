@@ -111,7 +111,7 @@ export async function createTrainer(prevState: State__, formData: FormData) {
   try {
     await pool.query(`
       INSERT INTO trainers (videoid, title, start, stop, date)
-      VALUES (${videoid}, ${title}, ${start}, ${stop}, ${date})
+      VALUES ('${videoid}', '${title}', '${start}', '${stop}', '${date}')
     `);
   } catch (error) {
     return {
@@ -135,8 +135,8 @@ export async function updateTrainer(ID: string, formData: FormData) {
   try {
     await pool.query(`
         UPDATE trainers
-        SET videoid = ${videoid}, title = ${title}, start = ${start}, stop = ${stop}
-        WHERE id = ${ID}
+        SET videoid = '${videoid}', title = '${title}', start = '${start}', stop = '${stop}'
+        WHERE id = '${ID}'
       `);
   } catch (error) {
     return {
@@ -153,7 +153,7 @@ export async function deleteTrainer(videoid: string, id: string) {
   // throw new Error('Failed to Delete Invoice');
 
   try {
-    await pool.query(`DELETE FROM trainers WHERE id = ${id}`);
+    await pool.query(`DELETE FROM trainers WHERE id = '${id}'`);
 
     revalidatePath(`/dashboard/youtube/${videoid}`);
 
@@ -188,7 +188,7 @@ export async function createVideo(prevState: State_, formData: FormData) {
   try {
     await pool.query(`
       INSERT INTO videos (uploaded, title, videoid, date)
-      VALUES (${uploaded}, ${title}, ${videoid}, ${date})
+      VALUES ('${uploaded}', '${title}', '${videoid}', '${date}')
     `);
   } catch (error) {
     return {
@@ -211,8 +211,8 @@ export async function updateVideo(id: string, formData: FormData) {
   try {
     await pool.query(`
         UPDATE videos
-        SET uploaded = ${uploaded}, title = ${title}, videoid = ${videoid}
-        WHERE id = ${id}
+        SET uploaded = '${uploaded}', title = '${title}', videoid = '${videoid}'
+        WHERE id = '${id}'
       `);
   } catch (error) {
     return {
@@ -229,9 +229,9 @@ export async function deleteVideo(id: string) {
   // throw new Error('Failed to Delete Invoice');
 
   try {
-    await pool.query(`DELETE FROM videos WHERE id = ${id}`);
+    await pool.query(`DELETE FROM videos WHERE id = '${id}'`);
 
-    // revalidatePath('/dashboard/youtube');
+    revalidatePath('/dashboard/youtube');
     return { message: 'Deleted Video.' };
   } catch (error) {
     return {
@@ -262,7 +262,7 @@ export async function createInvoice(prevState: State, formData: FormData) {
   try {
     await pool.query(`
       INSERT INTO invoices (customer_id, amount, status, date)
-      VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
+      VALUES ('${customerId}', '${amountInCents}', '${status}', '${date}')
     `);
   } catch (error) {
     return {
@@ -287,8 +287,8 @@ export async function updateInvoice(id: string, formData: FormData) {
   try {
     await pool.query(`
         UPDATE invoices
-        SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
-        WHERE id = ${id}
+        SET customer_id = '${customerId}', amount = '${amountInCents}', status = '${status}'
+        WHERE id = '${id}'
       `);
   } catch (error) {
     return {
@@ -305,7 +305,7 @@ export async function deleteInvoice(id: string) {
   // throw new Error('Failed to Delete Invoice');
 
   try {
-    await pool.query(`DELETE FROM invoices WHERE id = ${id}`);
+    await pool.query(`DELETE FROM invoices WHERE id = '${id}'`);
 
     revalidatePath('/dashboard/invoices');
     return { message: 'Deleted Invoice.' };

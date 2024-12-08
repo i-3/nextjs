@@ -26,7 +26,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   async function fetchVideoByID(id: string) {
     try {
       const data = await pool.query(`
-        SELECT * FROM videos WHERE id = ${id};
+        SELECT * FROM videos WHERE id = '${id}';
       `);
 
       return data.rows[0];
@@ -61,8 +61,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
         ]}
       />
 
-      {/* <form action={updateVideoWithID}> */}
-      <form>
+      <form action={updateVideoWithID}>
+      {/* <form> */}
         {[0, 1, 2].map((i) => (
           <div key={i} className='rounded-md bg-gray-800 p-4 md:p-6'>
             <div className='mb-4'>

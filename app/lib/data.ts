@@ -112,7 +112,7 @@ export async function fetchFilteredInvoices(
         invoices.date::text ILIKE '%${query}%' OR
         invoices.status ILIKE '%${query}%'
       ORDER BY invoices.date DESC
-      LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
+      LIMIT '${ITEMS_PER_PAGE}' OFFSET '${offset}'
     `);
 
     return invoices.rows;
@@ -152,7 +152,7 @@ export async function fetchInvoiceById(id: string) {
         invoices.amount,
         invoices.status
       FROM invoices
-      WHERE invoices.id = ${id};
+      WHERE invoices.id = '${id}';
     `);
 
     const invoice = data.rows.map((invoice: any) => ({

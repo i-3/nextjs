@@ -20,7 +20,7 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
   async function fetchTrainerByID(ID: string) {
     try {
       const data = await pool.query(`
-        SELECT * FROM trainers WHERE id = ${ID};
+        SELECT * FROM trainers WHERE id = '${ID}';
       `);
 
       return data.rows[0];
@@ -58,8 +58,8 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
         ]}
       />
 
-      {/* <form action={updateTrainerWithID}> */}
-      <form>
+      <form action={updateTrainerWithID}>
+      {/* <form> */}
         {[0, 1, 2, 3].map((i) => (
           <div key={i} className='rounded-md bg-gray-800 p-4 md:p-6'>
             <div className='mb-4'>

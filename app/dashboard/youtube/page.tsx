@@ -109,13 +109,13 @@ export default async function Page(props: {
                           <PencilIcon className='w-5' />
                         </Link>
 
-                        {/* <form action={deleteVideo.bind(null, video.id)}> */}
+                        <form action={deleteVideo.bind(null, video.id)}>
                         <button className='rounded-md border p-2 hover:bg-gray-700'>
                           <span className='sr-only'>Delete</span>
 
                           <TrashIcon className='w-5' />
                         </button>
-                        {/* </form> */}
+                        </form>
 
                         <Link href={`/dashboard/youtube/${video.videoid}`}>
                           <button className='flex rounded-md border p-2 hover:bg-gray-700'>

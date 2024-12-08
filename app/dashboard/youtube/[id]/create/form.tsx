@@ -17,8 +17,8 @@ export default function Form({ videoid }: { videoid: string }) {
   const [state, formAction] = useActionState(createTrainer, initialState);
 
   return (
-    // <form action={formAction}>
-    <form>
+    <form action={formAction}>
+    {/* <form> */}
       {[0, 1, 2, 3].map((i) => (
         <div key={i} className='rounded-md bg-gray-800 p-4 md:p-6'>
           <div className='mb-4'>
