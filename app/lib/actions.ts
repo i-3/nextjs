@@ -120,7 +120,7 @@ export async function createTrainer(prevState: State__, formData: FormData) {
     };
   }
 
-  // revalidatePath('/dashboard/invoices');
+  revalidatePath('/dashboard/invoices');
   redirect(`/dashboard/youtube/${videoid}`);
 }
 
@@ -145,7 +145,7 @@ export async function updateTrainer(ID: string, formData: FormData) {
     };
   }
 
-  // revalidatePath('/dashboard/invoices');
+  revalidatePath('/dashboard/invoices');
   redirect(`/dashboard/youtube/${videoid}`);
 }
 
@@ -197,7 +197,7 @@ export async function createVideo(prevState: State_, formData: FormData) {
     };
   }
 
-  // revalidatePath('/dashboard/invoices');
+  revalidatePath('/dashboard/invoices');
   redirect('/dashboard/youtube');
 }
 
@@ -221,7 +221,7 @@ export async function updateVideo(id: string, formData: FormData) {
     };
   }
 
-  // revalidatePath('/dashboard/invoices');
+  revalidatePath('/dashboard/invoices');
   redirect('/dashboard/youtube');
 }
 
