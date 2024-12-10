@@ -51,7 +51,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
         <Link
           href={`/dashboard/youtube/${videoid}/create`}
-          className='flex h-10 items-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-colors hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600'
+          className='flex h-10 items-center rounded-lg bg-lime-600 px-4 text-sm font-medium text-white transition-colors hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600'
         >
           <span className='hidden md:block'>Create Trainer</span>{' '}
           <PlusIcon className='h-5 md:ml-4' />
@@ -94,7 +94,9 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                         }
                         target='_blank'
                       >
-                        {trainer.title}
+                        <p className='text-lime-600 hover:text-lime-300'>
+                          {trainer.title}
+                        </p>
                       </a>
                     </td>
                     <td className='whitespace-nowrap px-3 py-3'>

@@ -30,7 +30,9 @@ export default async function RevenueChart() {
 
   return (
     <div className='w-full md:col-span-4'>
-      <h2 className={`${lusitana.className} mb-4 text-xl text-neutral-300 md:text-2xl`}>
+      <h2
+        className={`${lusitana.className} mb-4 text-xl text-neutral-300 md:text-2xl`}
+      >
         Recent Revenue
       </h2>
       {/* NOTE: Uncomment this code in Chapter 7 */}
@@ -49,7 +51,7 @@ export default async function RevenueChart() {
           {revenue.map((month: any) => (
             <div key={month.month} className='flex flex-col items-center gap-2'>
               <div
-                className='w-full rounded-md bg-blue-300'
+                className='w-full rounded-md bg-lime-300'
                 style={{
                   height: `${(chartHeight / topLabel) * month.revenue}px`,
                 }}

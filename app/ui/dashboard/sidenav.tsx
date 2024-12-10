@@ -9,12 +9,14 @@ export default function SideNav() {
   return (
     <div className='flex h-full flex-col px-3 py-4 md:px-2'>
       <Link
-        className='mb-2 flex h-20 items-end justify-start rounded-md bg-blue-600 p-4 md:h-40'
-        href='/'
+        className='bg-lime-900 text-neutral-50 mb-2 flex h-20 items-center justify-center rounded-md p-4 md:h-40'
+        href='https://freedns.afraid.org'
+        target='_blank'
       >
-        <div className='w-32 text-white md:w-40'>
+        {/* <div className='w-32 text-white md:w-40'>
           <AcmeLogo />
-        </div>
+        </div> */}
+        Free DNS
       </Link>
 
       <div className='flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2'>
@@ -22,7 +24,7 @@ export default function SideNav() {
 
         <div className='hidden h-auto w-full grow rounded-md bg-neutral-800 md:block'></div>
 
-        <form
+        {/* <form
           action={async () => {
             'use server';
             await signOut();
@@ -32,14 +34,14 @@ export default function SideNav() {
             className={clsx(
               'flex h-[48px] w-full grow items-center justify-center',
               'gap-2 rounded-md bg-neutral-800 text-neutral-300 p-3 text-sm font-medium',
-              'hover:bg-gray-600 hover:text-blue-600 md:flex-none md:justify-center md:p-2 md:px-3'
+              'hover:bg-gray-600 hover:text-lime-600 md:flex-none md:justify-center md:p-2 md:px-3'
             )}
           >
             <PowerIcon className='w-6' />
 
             <div className='hidden md:block'>Sign Out</div>
           </button>
-        </form>
+        </form> */}
       </div>
     </div>
   );
