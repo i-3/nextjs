@@ -93,10 +93,9 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                           `&end=${trainer.stop}`
                         }
                         target='_blank'
+                        className='underline text-lime-600 hover:text-lime-300'
                       >
-                        <p className='text-lime-600 hover:text-lime-300'>
-                          {trainer.title}
-                        </p>
+                        {trainer.title}
                       </a>
                     </td>
                     <td className='whitespace-nowrap px-3 py-3'>

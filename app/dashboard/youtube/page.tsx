@@ -11,7 +11,7 @@ import { deleteVideo } from '@/app/lib/actions';
 const pool = require('../../../db');
 
 export const metadata: Metadata = {
-  title: 'SmartAlex',
+  title: 'YouTube',
 };
 
 export default async function Page(props: {

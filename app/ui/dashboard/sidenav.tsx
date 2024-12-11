@@ -8,16 +8,18 @@ import clsx from 'clsx';
 export default function SideNav() {
   return (
     <div className='flex h-full flex-col px-3 py-4 md:px-2'>
-      <Link
-        className='bg-lime-900 text-neutral-50 mb-2 flex h-20 items-center justify-center rounded-md p-4 md:h-40'
-        href='https://freedns.afraid.org'
-        target='_blank'
-      >
+      <div className='bg-lime-900 mb-2 flex h-20 items-center justify-center rounded-md p-4 md:h-40'>
         {/* <div className='w-32 text-white md:w-40'>
           <AcmeLogo />
         </div> */}
-        Free DNS
-      </Link>
+        <a
+          href='https://freedns.afraid.org'
+          target='_blank'
+          className='text-neutral-50 hover:text-lime-500 underline'
+        >
+          Free DNS
+        </a>
+      </div>
 
       <div className='flex grow flex-row justify-between space-x-2 md:flex-col md:space-x-0 md:space-y-2'>
         <NavLinks />
