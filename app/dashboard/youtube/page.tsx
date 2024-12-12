@@ -102,6 +102,12 @@ export default async function Page(props: {
                     </td>
                     <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                       <div className='flex justify-end gap-3'>
+                        <Link href={`/dashboard/youtube/${video.videoid}`}>
+                          <button className='flex rounded-md border py-2 px-4 mr-12 hover:bg-gray-700'>
+                            Trainers
+                          </button>
+                        </Link>
+
                         <Link
                           href={`/dashboard/youtube/${video.id}/edit`}
                           className='rounded-md border p-2 hover:bg-gray-700'
@@ -116,12 +122,6 @@ export default async function Page(props: {
                             <TrashIcon className='w-5' />
                           </button>
                         </form>
-
-                        <Link href={`/dashboard/youtube/${video.videoid}`}>
-                          <button className='flex rounded-md border p-2 hover:bg-gray-700'>
-                            <span className=''>Trainers</span>
-                          </button>
-                        </Link>
                       </div>
                     </td>
                   </tr>
