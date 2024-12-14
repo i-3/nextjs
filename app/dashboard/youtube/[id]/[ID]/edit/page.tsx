@@ -40,7 +40,11 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
     notFound();
   }
 
-  const updateTrainerWithID = updateTrainer.bind(null, ID);
+  async function updTra(id: string, formData: FormData) {
+    'use server';
+    await updateTrainer(id, formData);
+  }
+  const updateInvoiceWithId = updTra.bind(null, ID);
 
   return (
     <main>
@@ -58,8 +62,8 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
         ]}
       />
 
-      <form action={updateTrainerWithID}>
-      {/* <form> */}
+      <form action={updateInvoiceWithId}>
+        {/* <form> */}
         {[0, 1, 2, 3].map((i) => (
           <div key={i} className='rounded-md bg-gray-800 p-4 md:p-6'>
             <div className='mb-4'>

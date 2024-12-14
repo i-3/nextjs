@@ -154,9 +154,7 @@ export async function deleteTrainer(videoid: string, id: string) {
 
   try {
     await pool.query(`DELETE FROM trainers WHERE id = '${id}'`);
-
     revalidatePath(`/dashboard/youtube/${videoid}`);
-
     return { message: 'Deleted Trainer.' };
   } catch (error) {
     return {

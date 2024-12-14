@@ -22,7 +22,6 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     videoid: string;
     date: string;
   };
-
   async function fetchVideoByID(id: string) {
     try {
       const data = await pool.query(`
@@ -35,19 +34,18 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
       throw new Error('Failed to fetch video.');
     }
   }
-
   const params = await props.params;
   const id = params.id;
   const video = await fetchVideoByID(id);
-
   // console.log(v);
-
   if (!video) {
     notFound();
   }
-
-  const updateVideoWithID = updateVideo.bind(null, id);
-
+  async function updVid(id: string, formData: FormData) {
+    'use server';
+    await updateVideo(id, formData);
+  }
+  const updateInvoiceWithId = updVid.bind(null, id);
   return (
     <main>
       <Breadcrumbs
@@ -60,9 +58,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
           },
         ]}
       />
-
-      <form action={updateVideoWithID}>
-      {/* <form> */}
+      <form action={updateInvoiceWithId}>
+        {/* <form> */}
         {[0, 1, 2].map((i) => (
           <div key={i} className='rounded-md bg-gray-800 p-4 md:p-6'>
             <div className='mb-4'>
@@ -74,7 +71,6 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                   (i == 1 && 'Enter a title') ||
                   (i == 2 && 'Enter a video')}
               </label>
-
               <div className='relative mt-2 rounded-md'>
                 <div className='relative'>
                   <input
@@ -110,7 +106,6 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                   <CurrencyDollarIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
                 </div>
               </div>
-
               {/* <div id='customer-error' aria-live='polite' aria-atomic='true'>
                 {state.errors?.amount &&
                   state.errors.amount.map((error: string) => (
@@ -122,7 +117,6 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
             </div>
           </div>
         ))}
-
         <div className='mt-6 flex justify-end gap-4'>
           <Link
             href='/dashboard/youtube'
@@ -130,7 +124,6 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
           >
             Cancel
           </Link>
-
           <Button type='submit'>Edit Video</Button>
         </div>
       </form>

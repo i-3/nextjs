@@ -6,12 +6,13 @@ import { lusitana } from '@/app/ui/fonts';
 import Link from 'next/link';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { deleteTrainer } from '@/app/lib/actions';
+import { DeleteTrainer } from '../buttons';
 // import { sql } from '@vercel/postgres';
 const pool = require('../../../../db');
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
-  const videoid = params.id;
+  const videoId = params.id;
   const loop = 9;
 
   type Trainer = {
@@ -26,7 +27,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   async function fetchTrainers() {
     try {
       const data = await pool.query(
-        `SELECT * FROM trainers WHERE videoid = '${videoid}'`
+        `SELECT * FROM trainers WHERE videoid = '${videoId}'`
       );
 
       return data.rows;
@@ -43,14 +44,14 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
       <div className='flex w-full items-center justify-between'>
         <h1
           className={`${lusitana.className} text-2xl text-neutral-300`}
-        >{`YouTube / ${videoid}`}</h1>
+        >{`YouTube / ${videoId}`}</h1>
       </div>
 
       <div className='mt-4 flex items-center justify-between gap-2 md:mt-8'>
         {/* <Search placeholder='Search videos...' /> */}
 
         <Link
-          href={`/dashboard/youtube/${videoid}/create`}
+          href={`/dashboard/youtube/${videoId}/create`}
           className='flex h-10 items-center rounded-lg bg-lime-600 px-4 text-sm font-medium text-white transition-colors hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600'
         >
           <span className='hidden md:block'>Create Trainer</span>{' '}
@@ -87,7 +88,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                       <a
                         href={
                           'https://www.youtube.com/watch' +
-                          `?v=${videoid}` +
+                          `?v=${videoId}` +
                           `&loop=${loop}` +
                           `&start=${trainer.start}` +
                           `&end=${trainer.stop}`
@@ -107,20 +108,13 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                     <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                       <div className='flex justify-end gap-3'>
                         <Link
-                          href={`/dashboard/youtube/${videoid}/${trainer.id}/edit`}
+                          href={`/dashboard/youtube/${videoId}/${trainer.id}/edit`}
                           className='rounded-md border p-2 hover:bg-gray-700'
                         >
                           <PencilIcon className='w-5' />
                         </Link>
 
-                        <form
-                          action={deleteTrainer.bind(null, videoid, trainer.id)}
-                        >
-                          <button className='rounded-md border p-2 hover:bg-gray-700'>
-                            <span className='sr-only'>Delete</span>
-                            <TrashIcon className='w-5' />
-                          </button>
-                        </form>
+                        <DeleteTrainer id={videoId} ID={trainer.id} />
                       </div>
                     </td>
                   </tr>

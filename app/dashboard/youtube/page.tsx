@@ -7,6 +7,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { deleteVideo } from '@/app/lib/actions';
+import { DeleteVideo } from './buttons';
 // import { sql } from '@vercel/postgres';
 const pool = require('../../../db');
 
@@ -115,13 +116,7 @@ export default async function Page(props: {
                           <PencilIcon className='w-5' />
                         </Link>
 
-                        <form action={deleteVideo.bind(null, video.id)}>
-                          <button className='rounded-md border p-2 hover:bg-gray-700'>
-                            <span className='sr-only'>Delete</span>
-
-                            <TrashIcon className='w-5' />
-                          </button>
-                        </form>
+                        <DeleteVideo id={video.id} />
                       </div>
                     </td>
                   </tr>
