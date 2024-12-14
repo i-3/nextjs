@@ -26,10 +26,10 @@ export default function SideNav() {
 
         <div className='hidden h-auto w-full grow rounded-md bg-neutral-800 md:block'></div>
 
-        {/* <form
+        <form
           action={async () => {
             'use server';
-            await signOut();
+            // await signOut();
           }}
         >
           <button
@@ -43,7 +43,7 @@ export default function SideNav() {
 
             <div className='hidden md:block'>Sign Out</div>
           </button>
-        </form> */}
+        </form>
       </div>
     </div>
   );
