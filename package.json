@@ -6,8 +6,10 @@
     "start": "next start"
   },
   "dependencies": {
+    "@ai-sdk/groq": "^1.0.8",
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/forms": "^0.5.9",
+    "ai": "^4.0.18",
     "autoprefixer": "10.4.20",
     "bcrypt": "^5.1.1",
     "clsx": "^2.1.1",

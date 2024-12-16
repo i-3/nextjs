@@ -5,6 +5,7 @@ import {
   HomeIcon,
   DocumentDuplicateIcon,
   LanguageIcon,
+  ChatBubbleLeftIcon,
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -21,6 +22,7 @@ const links = [
   },
   { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
   { name: 'YouTube', href: '/dashboard/youtube', icon: LanguageIcon },
+  { name: 'GroqChat', href: '/dashboard/chat', icon: ChatBubbleLeftIcon },
 ];
 
 export default function NavLinks() {

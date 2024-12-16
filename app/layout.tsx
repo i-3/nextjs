@@ -7,8 +7,8 @@ export const metadata: Metadata = {
     template: '%s | Iurii Dashboard',
     default: 'Iurii Dashboard',
   },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+  description: 'My Next.js demo project.',
+  metadataBase: new URL('http://iurii.1984.lv'),
 };
 
 export default function RootLayout({
