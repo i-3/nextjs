@@ -22,7 +22,7 @@ const links = [
   },
   { name: 'Customers', href: '/dashboard/customers', icon: UserGroupIcon },
   { name: 'YouTube', href: '/dashboard/youtube', icon: LanguageIcon },
-  { name: 'GroqChat', href: '/dashboard/chat', icon: ChatBubbleLeftIcon },
+  { name: 'ChatGroq', href: '/dashboard/chat', icon: ChatBubbleLeftIcon },
 ];
 
 export default function NavLinks() {
