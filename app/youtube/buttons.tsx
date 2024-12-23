@@ -11,7 +11,7 @@ export function DeleteVideo({ id }: { id: string }) {
 
   return (
     <form action={deleteVideoWithId}>
-      <button className='rounded-md border p-2 hover:bg-gray-700'>
+      <button className='rounded-md border p-2 hover:bg-muted'>
         <span className='sr-only'>Delete</span>
         <TrashIcon className='w-5' />
       </button>
@@ -28,7 +28,7 @@ export function DeleteTrainer({ id, ID }: { id: string; ID: string }) {
 
   return (
     <form action={deleteTrainerWithId}>
-      <button className='rounded-md border p-2 hover:bg-gray-700'>
+      <button className='rounded-md border p-2 hover:bg-muted'>
         <span className='sr-only'>Delete</span>
         <TrashIcon className='w-5' />
       </button>

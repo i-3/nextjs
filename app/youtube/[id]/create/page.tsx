@@ -1,18 +1,18 @@
 import Form from './form';
-import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
+import Breadcrumbs from '@/app/ui/breadcrumbs';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
   const videoid = params.id;
 
   return (
-    <main>
+    <main className='w-screen py-8 px-48'>
       <Breadcrumbs
         breadcrumbs={[
-          { label: `YouTube / ${videoid}`, href: '/dashboard/youtube' },
+          { label: `YouTube / ${videoid}`, href: '/youtube' },
           {
             label: 'Create Trainer',
-            href: `/dashboard/youtube/${videoid}/create`,
+            href: `/youtube/${videoid}/create`,
             active: true,
           },
         ]}

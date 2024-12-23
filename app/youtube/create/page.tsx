@@ -1,7 +1,7 @@
 'use client';
 
 import Form from '@/app/ui/invoices/create-form';
-import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
+import Breadcrumbs from '@/app/ui/breadcrumbs';
 import { fetchCustomers } from '@/app/lib/data';
 import { createVideo, State_ } from '@/app/lib/actions';
 import { useActionState } from 'react';
@@ -12,32 +12,33 @@ import {
   ClockIcon,
   CurrencyDollarIcon,
 } from '@heroicons/react/24/outline';
+import clsx from 'clsx';
 
 export default function Page() {
   const initialState: State_ = { message: null, errors: {} };
   const [state, formAction] = useActionState(createVideo, initialState);
 
   return (
-    <main>
+    <main className='w-screen py-8 px-48'>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'YouTube', href: '/dashboard/youtube' },
+          { label: 'YouTube', href: '/youtube' },
           {
             label: 'Create Video',
-            href: '/dashboard/youtube/create',
+            href: '/youtube/create',
             active: true,
           },
         ]}
       />
 
       <form action={formAction}>
-      {/* <form> */}
+        {/* <form> */}
         {[0, 1, 2].map((i) => (
-          <div key={i} className='rounded-md bg-gray-800 p-4 md:p-6'>
+          <div key={i} className='rounded-md bg-muted p-4 md:p-6'>
             <div className='mb-4'>
               <label
                 htmlFor='amount'
-                className='mb-2 block text-sm font-medium text-gray-50'
+                className='mb-2 block text-sm font-medium '
               >
                 {(i == 0 && 'Enter uploaded') ||
                   (i == 1 && 'Enter a title') ||
@@ -67,11 +68,20 @@ export default function Page() {
                       (i == 2 && 'Enter a video ID') ||
                       ''
                     }
-                    className='bg-gray-900 text-gray-100 peer block w-full rounded-md border border-gray-700 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500'
+                    className={clsx(
+                      'bg-background peer block w-full',
+                      ' rounded-md border  py-2 pl-10 text-sm',
+                      ' outline-2 placeholder:text-muted-foreground'
+                    )}
                     // required
                   />
 
-                  <CurrencyDollarIcon className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900' />
+                  <CurrencyDollarIcon
+                    className={clsx(
+                      'pointer-events-none absolute left-3 top-1/2 h-[18px]',
+                      ' w-[18px] -translate-y-1/2 '
+                    )}
+                  />
                 </div>
               </div>
 
@@ -89,8 +99,11 @@ export default function Page() {
 
         <div className='mt-6 flex justify-end gap-4'>
           <Link
-            href='/dashboard/youtube'
-            className='flex h-10 items-center rounded-lg bg-gray-800 px-4 text-sm font-medium text-gray-100 transition-colors hover:bg-gray-600'
+            href='/youtube'
+            className={clsx(
+              'flex h-10 items-center rounded-lg bg-muted px-4 text-sm',
+              ' font-medium  transition-colors hover:bg-muted-foreground'
+            )}
           >
             Cancel
           </Link>

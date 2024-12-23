@@ -1,5 +1,3 @@
-import Search from '@/app/ui/youtube/search';
-import Pagination from '@/app/ui/youtube/pagination';
 import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 import { lusitana } from '@/app/ui/fonts';
@@ -7,8 +5,10 @@ import Link from 'next/link';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { deleteTrainer } from '@/app/lib/actions';
 import { DeleteTrainer } from '../buttons';
-// import { sql } from '@vercel/postgres';
-const pool = require('../../../../db');
+import Breadcrumbs from '@/app/ui/breadcrumbs';
+import clsx from 'clsx';
+
+const pool = require('../../../db');
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -40,30 +40,37 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   const trainers = await fetchTrainers();
 
   return (
-    <div className='w-full'>
-      <div className='flex w-full items-center justify-between'>
-        <h1
-          className={`${lusitana.className} text-2xl text-neutral-300`}
-        >{`YouTube / ${videoId}`}</h1>
-      </div>
+    <div className='w-full p-8'>
+      <Breadcrumbs
+        breadcrumbs={[
+          { label: 'YouTube', href: '/youtube' },
+          {
+            label: `${videoId}`,
+            href: '/youtube/',
+            active: true,
+          },
+        ]}
+      />
 
       <div className='mt-4 flex items-center justify-between gap-2 md:mt-8'>
         {/* <Search placeholder='Search videos...' /> */}
 
         <Link
-          href={`/dashboard/youtube/${videoId}/create`}
-          className='flex h-10 items-center rounded-lg bg-lime-600 px-4 text-sm font-medium text-white transition-colors hover:bg-lime-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-lime-600'
+          href={`/youtube/${videoId}/create`}
+          className={clsx(
+            'flex h-10 items-center rounded-lg bg-muted px-4 text-sm',
+            ' font-medium transition-colors hover:bg-primary '
+          )}
         >
-          <span className='hidden md:block'>Create Trainer</span>{' '}
-          <PlusIcon className='h-5 md:ml-4' />
+          <PlusIcon className='h-5 ' />
         </Link>
       </div>
 
       {/* <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}> */}
       <div className='mt-6 flow-root'>
         <div className='inline-block min-w-full align-middle'>
-          <div className='rounded-lg bg-neutral-800 p-2 md:pt-0'>
-            <table className='hidden min-w-full text-neutral-300 md:table'>
+          <div className='rounded-lg bg-muted p-2 md:pt-0'>
+            <table className='hidden min-w-full  md:table'>
               <thead className='rounded-lg text-left text-sm font-normal'>
                 <tr>
                   <th scope='col' className='px-4 py-5 font-medium sm:pl-6'>
@@ -78,11 +85,18 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                 </tr>
               </thead>
 
-              <tbody className='bg-white'>
+              <tbody className=''>
                 {trainers?.map((trainer: any) => (
                   <tr
                     key={trainer.title}
-                    className='w-full bg-neutral-900 border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'
+                    className={clsx(
+                      'w-full bg-background border-b py-3 text-sm',
+                      ' last-of-type:border-none',
+                      ' [&:first-child>td:first-child]:rounded-tl-lg',
+                      ' [&:first-child>td:last-child]:rounded-tr-lg',
+                      ' [&:last-child>td:first-child]:rounded-bl-lg',
+                      ' [&:last-child>td:last-child]:rounded-br-lg'
+                    )}
                   >
                     <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                       <a
@@ -94,7 +108,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                           `&end=${trainer.stop}`
                         }
                         target='_blank'
-                        className='underline text-lime-600 hover:text-lime-300'
+                        className=' text-primary hover:underline'
                       >
                         {trainer.title}
                       </a>
@@ -108,8 +122,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                     <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                       <div className='flex justify-end gap-3'>
                         <Link
-                          href={`/dashboard/youtube/${videoId}/${trainer.id}/edit`}
-                          className='rounded-md border p-2 hover:bg-gray-700'
+                          href={`/youtube/${videoId}/${trainer.id}/edit`}
+                          className='rounded-md border p-2 hover:bg-muted'
                         >
                           <PencilIcon className='w-5' />
                         </Link>

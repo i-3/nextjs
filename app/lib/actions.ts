@@ -120,8 +120,8 @@ export async function createTrainer(prevState: State__, formData: FormData) {
     };
   }
 
-  revalidatePath(`/dashboard/youtube/${videoid}`);
-  redirect(`/dashboard/youtube/${videoid}`);
+  revalidatePath(`/youtube/${videoid}`);
+  redirect(`/youtube/${videoid}`);
 }
 
 export async function updateTrainer(ID: string, formData: FormData) {
@@ -145,8 +145,8 @@ export async function updateTrainer(ID: string, formData: FormData) {
     };
   }
 
-  revalidatePath(`/dashboard/youtube/${videoid}`);
-  redirect(`/dashboard/youtube/${videoid}`);
+  revalidatePath(`/youtube/${videoid}`);
+  redirect(`/youtube/${videoid}`);
 }
 
 export async function deleteTrainer(videoid: string, id: string) {
@@ -154,7 +154,7 @@ export async function deleteTrainer(videoid: string, id: string) {
 
   try {
     await pool.query(`DELETE FROM trainers WHERE id = '${id}'`);
-    revalidatePath(`/dashboard/youtube/${videoid}`);
+    revalidatePath(`/youtube/${videoid}`);
     return { message: 'Deleted Trainer.' };
   } catch (error) {
     return {
@@ -195,8 +195,8 @@ export async function createVideo(prevState: State_, formData: FormData) {
     };
   }
 
-  revalidatePath('/dashboard/youtube');
-  redirect('/dashboard/youtube');
+  revalidatePath('/youtube');
+  redirect('/youtube');
 }
 
 export async function updateVideo(id: string, formData: FormData) {
@@ -219,8 +219,8 @@ export async function updateVideo(id: string, formData: FormData) {
     };
   }
 
-  revalidatePath('/dashboard/youtube');
-  redirect('/dashboard/youtube');
+  revalidatePath('/youtube');
+  redirect('/youtube');
 }
 
 export async function deleteVideo(id: string) {
@@ -229,7 +229,7 @@ export async function deleteVideo(id: string) {
   try {
     await pool.query(`DELETE FROM videos WHERE id = '${id}'`);
 
-    revalidatePath('/dashboard/youtube');
+    revalidatePath('/youtube');
     return { message: 'Deleted Video.' };
   } catch (error) {
     return {
@@ -269,8 +269,8 @@ export async function createInvoice(prevState: State, formData: FormData) {
     };
   }
 
-  revalidatePath('/dashboard/invoices');
-  redirect('/dashboard/invoices');
+  revalidatePath('/invoices');
+  redirect('/invoices');
 }
 
 export async function updateInvoice(id: string, formData: FormData) {
@@ -295,8 +295,8 @@ export async function updateInvoice(id: string, formData: FormData) {
     };
   }
 
-  revalidatePath('/dashboard/invoices');
-  redirect('/dashboard/invoices');
+  revalidatePath('/invoices');
+  redirect('/invoices');
 }
 
 export async function deleteInvoice(id: string) {
@@ -305,7 +305,7 @@ export async function deleteInvoice(id: string) {
   try {
     await pool.query(`DELETE FROM invoices WHERE id = '${id}'`);
 
-    revalidatePath('/dashboard/invoices');
+    revalidatePath('/invoices');
     return { message: 'Deleted Invoice.' };
   } catch (error) {
     return {
