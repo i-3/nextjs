@@ -30,7 +30,7 @@ export default function RootLayout({
           <div className='h-screen flex flex-col'>
             <Header />
 
-            <main className='flex flex-1'>{children}</main>
+            <main className='flex flex-1 bg-background'>{children}</main>
 
             <footer className='flex h-20 bg-background  items-center justify-center'>
               <a
