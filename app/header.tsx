@@ -29,7 +29,7 @@ export default function Header() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className=' h-20 flex bg-background justify-center items-center'>
+    <div className=' h-20 flex justify-center items-center'>
       {links.map((link, k) => {
         const LinkIcon = link.icon;
 
@@ -74,9 +74,9 @@ export default function Header() {
         }}
       >
         {theme == 'dark' ? (
-          <SunIcon className='h-6' />
-        ) : (
           <MoonIcon className='h-6' />
+        ) : (
+          <SunIcon className='h-6' />
         )}
       </button>
     </div>

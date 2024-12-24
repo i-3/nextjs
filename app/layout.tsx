@@ -32,7 +32,7 @@ export default function RootLayout({
 
             <main className='flex flex-1 bg-background'>{children}</main>
 
-            <footer className='flex h-20 bg-background  items-center justify-center'>
+            <footer className='flex h-20 items-center justify-center'>
               <a
                 href='https://freedns.afraid.org'
                 target='_blank'
