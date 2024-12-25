@@ -22,6 +22,7 @@ const links = [
   { href: '/', icon: HomeModernIcon },
   { href: '/youtube', icon: LanguageIcon },
   { href: '/chat', icon: ChatBubbleLeftRightIcon },
+  { href: '/login', icon: ArrowRightEndOnRectangleIcon },
 ];
 
 export default function Header() {
@@ -48,7 +49,7 @@ export default function Header() {
         );
       })}
 
-      <form
+      {/* <form
         action={async () => {
           // 'use server';
           // await signOut();
@@ -62,7 +63,7 @@ export default function Header() {
         >
           <ArrowRightEndOnRectangleIcon className='h-6' />
         </button>
-      </form>
+      </form> */}
 
       <button
         className={clsx(
