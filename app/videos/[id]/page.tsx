@@ -4,7 +4,7 @@ import { lusitana } from '@/app/ui/fonts';
 import Link from 'next/link';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { deleteTrainer } from '@/app/lib/actions';
-import { DeleteTrainer } from '../buttons';
+import { DeleteTrainer } from '../../buttons';
 import Breadcrumbs from '@/app/ui/breadcrumbs';
 import clsx from 'clsx';
 
@@ -43,20 +43,20 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     <div className='w-full p-8'>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'YouTube', href: '/youtube' },
+          { label: 'Videos', href: '/videos' },
           {
             label: `${videoId}`,
-            href: '/youtube/',
+            href: '/videos/',
             active: true,
           },
         ]}
       />
 
-      <div className='mt-4 flex items-center justify-between gap-2 md:mt-8'>
+      <div className='flex items-center justify-between '>
         {/* <Search placeholder='Search videos...' /> */}
 
         <Link
-          href={`/youtube/${videoId}/create`}
+          href={`/videos/${videoId}/create`}
           className={clsx(
             'flex h-10 items-center rounded-lg bg-muted px-4 text-sm',
             ' font-medium transition-colors hover:bg-primary '
@@ -122,7 +122,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                     <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                       <div className='flex justify-end gap-3'>
                         <Link
-                          href={`/youtube/${videoId}/${trainer.id}/edit`}
+                          href={`/videos/${videoId}/${trainer.id}/edit`}
                           className='rounded-md border p-2 hover:bg-muted'
                         >
                           <PencilIcon className='w-5' />

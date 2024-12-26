@@ -52,12 +52,12 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
       <Breadcrumbs
         breadcrumbs={[
           {
-            label: `YouTube / ${trainer.videoid}`,
-            href: `/youtube/${trainer.videoid}`,
+            label: `Videos / ${trainer.videoid}`,
+            href: `/videos/${trainer.videoid}`,
           },
           {
             label: `${ID} / Edit Trainer`,
-            href: `/youtube/${trainer.videoid}/${ID}/edit`,
+            href: `/videos/${trainer.videoid}/${ID}/edit`,
             active: true,
           },
         ]}
@@ -141,7 +141,7 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
 
         <div className='mt-6 flex justify-end gap-4'>
           <Link
-            href={`/youtube/${trainer.videoid}`}
+            href={`/videos/${trainer.videoid}`}
             className={clsx(
               'flex h-10 items-center rounded-lg bg-muted px-4 text-sm',
               ' font-medium  transition-colors hover:bg-muted-foreground'

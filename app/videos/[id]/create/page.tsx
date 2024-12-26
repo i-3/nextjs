@@ -9,10 +9,10 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     <main className='w-screen py-8 px-48'>
       <Breadcrumbs
         breadcrumbs={[
-          { label: `YouTube / ${videoid}`, href: '/youtube' },
+          { label: `Videos / ${videoid}`, href: '/videos' },
           {
             label: 'Create Trainer',
-            href: `/youtube/${videoid}/create`,
+            href: `/videos/${videoid}/create`,
             active: true,
           },
         ]}

@@ -1,14 +1,6 @@
-// import { sql } from '@vercel/postgres';
-const pool = require('../../db');
-import {
-  CustomerField,
-  CustomersTableType,
-  InvoiceForm,
-  InvoicesTable,
-  LatestInvoiceRaw,
-  Revenue,
-} from './definitions';
 import { formatCurrency } from './utils';
+
+const pool = require('../../db');
 
 export async function fetchRevenue() {
   try {

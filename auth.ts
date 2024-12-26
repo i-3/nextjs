@@ -2,10 +2,16 @@ import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
-// import { sql } from '@vercel/postgres';
-const pool = require('./db');
-import type { User } from '@/app/lib/definitions';
 import bcrypt from 'bcrypt';
+
+const pool = require('./db');
+
+export type User = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+};
 
 async function getUser(email: string): Promise<User | undefined> {
   try {
@@ -17,7 +23,7 @@ async function getUser(email: string): Promise<User | undefined> {
   }
 }
 
-export const { auth, signIn, signOut } = NextAuth({
+export const { handlers, signIn, signOut, auth } = NextAuth({
   ...authConfig,
 
   providers: [

@@ -21,10 +21,10 @@ export default function Page() {
     <main className='w-screen py-8 px-48'>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'YouTube', href: '/youtube' },
+          { label: 'Videos', href: '/videos' },
           {
             label: 'Create Video',
-            href: '/youtube/create',
+            href: '/videos/create',
             active: true,
           },
         ]}
@@ -98,7 +98,7 @@ export default function Page() {
 
         <div className='mt-6 flex justify-end gap-4'>
           <Link
-            href='/youtube'
+            href='/videos'
             className={clsx(
               'flex h-10 items-center rounded-lg bg-muted px-4 text-sm',
               ' font-medium  transition-colors hover:bg-muted-foreground'

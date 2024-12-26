@@ -1,85 +1,55 @@
-'use client';
-
-import Link from 'next/link';
-import { PowerIcon } from '@heroicons/react/24/outline';
-import { signOut } from '@/auth';
 import clsx from 'clsx';
 import {
-  ArrowRightEndOnRectangleIcon,
   ArrowRightStartOnRectangleIcon,
-  MoonIcon,
-  SunIcon,
-  UserGroupIcon,
-  HomeModernIcon,
-  DocumentDuplicateIcon,
-  LanguageIcon,
-  ChatBubbleLeftRightIcon,
+  ArrowRightEndOnRectangleIcon,
 } from '@heroicons/react/24/outline';
-import { usePathname } from 'next/navigation';
-import { useTheme } from 'next-themes';
+import { signOut } from '@/auth';
+import { Links, ThemeSwitcher } from './ui/client';
+import Link from 'next/link';
+import { auth } from '../auth';
 
-const links = [
-  { href: '/', icon: HomeModernIcon },
-  { href: '/youtube', icon: LanguageIcon },
-  { href: '/chat', icon: ChatBubbleLeftRightIcon },
-  { href: '/login', icon: ArrowRightEndOnRectangleIcon },
-];
-
-export default function Header() {
-  const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+export default async function Header() {
+  const session = await auth();
 
   return (
-    <div className=' h-20 flex justify-center items-center'>
-      {links.map((link, k) => {
-        const LinkIcon = link.icon;
-
-        return (
-          <Link
-            key={k}
-            href={link.href}
-            className={clsx(
-              'mx-5 flex h-10 w-10 items-center justify-center',
-              'rounded-full hover:bg-neutral-500',
-              pathname === link.href && 'text-primary'
-            )}
-          >
-            <LinkIcon className='w-6' />
-          </Link>
-        );
-      })}
-
-      {/* <form
-        action={async () => {
-          // 'use server';
-          // await signOut();
-        }}
-      >
-        <button
+    <div className=' h-20 flex justify-end items-center'>
+      {!session?.user ? (
+        <Link
+          href={'/login'}
           className={clsx(
-            'mx-5  flex h-10 w-10 items-center justify-center rounded-full',
-            ' hover:bg-neutral-500'
+            'mx-6 flex h-12 w-12 items-center justify-center',
+            'rounded-full hover:bg-neutral-500'
           )}
         >
-          <ArrowRightEndOnRectangleIcon className='h-6' />
-        </button>
-      </form> */}
+          <ArrowRightEndOnRectangleIcon className='w-6' />
+        </Link>
+      ) : (
+        <>
+          <Links />
 
-      <button
-        className={clsx(
-          'mx-5  flex h-10 w-10 items-center justify-center',
-          ' rounded-full hover:bg-neutral-500'
-        )}
-        onClick={() => {
-          theme == 'dark' ? setTheme('light') : setTheme('dark');
-        }}
-      >
-        {theme == 'dark' ? (
-          <MoonIcon className='h-6' />
-        ) : (
-          <SunIcon className='h-6' />
-        )}
-      </button>
+          <form
+            action={async () => {
+              'use server';
+              await signOut();
+            }}
+          >
+            <button
+              className={clsx(
+                'flex mx-6 h-12 w-12 items-center justify-center rounded-full',
+                ' hover:bg-neutral-500'
+              )}
+            >
+              <ArrowRightStartOnRectangleIcon className='h-6 text-primary ' />
+            </button>
+
+            <div className=' flex absolute w-24 justify-center'>
+              <p className='text-xs text-primary'>User</p>
+            </div>
+          </form>
+        </>
+      )}
+
+      <ThemeSwitcher />
     </div>
   );
 }

@@ -5,13 +5,13 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import { deleteVideo } from '@/app/lib/actions';
-import { DeleteVideo } from './buttons';
+import { DeleteVideo } from '../buttons';
 import clsx from 'clsx';
 
 const pool = require('../../db');
 
 export const metadata: Metadata = {
-  title: 'YouTube',
+  title: 'Videos',
 };
 
 export default async function Page(props: {
@@ -43,13 +43,13 @@ export default async function Page(props: {
 
   return (
     <div className=' p-8 w-full'>
-      <div className='flex w-full items-center justify-between'>
-        <h1 className={`${lusitana.className} text-2xl `}>YouTube</h1>
+      <div className=' h-10'>
+        <h1 className={`${lusitana.className} text-2xl `}>Videos</h1>
       </div>
 
       <div className='flex items-center justify-between mt-4'>
         <Link
-          href='/youtube/create'
+          href='/videos/create'
           className={clsx(
             'flex h-10 items-center rounded-lg bg-muted',
             ' px-4 text-sm font-medium  transition-colors',
@@ -93,14 +93,14 @@ export default async function Page(props: {
                   </td>
                   <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                     <div className='flex justify-end gap-3'>
-                      <Link href={`/youtube/${video.videoid}`}>
+                      <Link href={`/videos/${video.videoid}`}>
                         <button className='flex rounded-md border py-2 px-4 mr-12 hover:bg-muted'>
                           Trainers
                         </button>
                       </Link>
 
                       <Link
-                        href={`/youtube/${video.id}/edit`}
+                        href={`/videos/${video.id}/edit`}
                         className='rounded-md border p-2 hover:bg-muted'
                       >
                         <PencilIcon className='w-5' />

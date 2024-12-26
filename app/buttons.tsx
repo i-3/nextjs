@@ -1,5 +1,4 @@
-import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
-import Link from 'next/link';
+import { TrashIcon } from '@heroicons/react/24/outline';
 import { deleteVideo, deleteTrainer } from '@/app/lib/actions';
 
 export function DeleteVideo({ id }: { id: string }) {

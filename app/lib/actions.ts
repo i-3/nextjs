@@ -3,10 +3,28 @@
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { z } from 'zod';
-// import { sql } from '@vercel/postgres';
 const pool = require('../../db');
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData
+) {
+  try {
+    await signIn('credentials', formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
+    }
+    throw error;
+  }
+}
 
 const FormSchema = z.object({
   id: z.string(),
@@ -120,8 +138,8 @@ export async function createTrainer(prevState: State__, formData: FormData) {
     };
   }
 
-  revalidatePath(`/youtube/${videoid}`);
-  redirect(`/youtube/${videoid}`);
+  revalidatePath(`/videos/${videoid}`);
+  redirect(`/videos/${videoid}`);
 }
 
 export async function updateTrainer(ID: string, formData: FormData) {
@@ -145,8 +163,8 @@ export async function updateTrainer(ID: string, formData: FormData) {
     };
   }
 
-  revalidatePath(`/youtube/${videoid}`);
-  redirect(`/youtube/${videoid}`);
+  revalidatePath(`/videos/${videoid}`);
+  redirect(`/videos/${videoid}`);
 }
 
 export async function deleteTrainer(videoid: string, id: string) {
@@ -154,7 +172,7 @@ export async function deleteTrainer(videoid: string, id: string) {
 
   try {
     await pool.query(`DELETE FROM trainers WHERE id = '${id}'`);
-    revalidatePath(`/youtube/${videoid}`);
+    revalidatePath(`/videos/${videoid}`);
     return { message: 'Deleted Trainer.' };
   } catch (error) {
     return {
@@ -195,8 +213,8 @@ export async function createVideo(prevState: State_, formData: FormData) {
     };
   }
 
-  revalidatePath('/youtube');
-  redirect('/youtube');
+  revalidatePath('/videos');
+  redirect('/videos');
 }
 
 export async function updateVideo(id: string, formData: FormData) {
@@ -219,8 +237,8 @@ export async function updateVideo(id: string, formData: FormData) {
     };
   }
 
-  revalidatePath('/youtube');
-  redirect('/youtube');
+  revalidatePath('/videos');
+  redirect('/videos');
 }
 
 export async function deleteVideo(id: string) {
@@ -229,31 +247,12 @@ export async function deleteVideo(id: string) {
   try {
     await pool.query(`DELETE FROM videos WHERE id = '${id}'`);
 
-    revalidatePath('/youtube');
+    revalidatePath('/videos');
     return { message: 'Deleted Video.' };
   } catch (error) {
     return {
       error,
       // message: 'Database Error: Failed to Delete Invoice.',
     };
-  }
-}
-
-export async function authenticate(
-  prevState: string | undefined,
-  formData: FormData
-) {
-  try {
-    // await signIn('credentials', formData);
-  } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.type) {
-        case 'CredentialsSignin':
-          return 'Invalid credentials.';
-        default:
-          return 'Something went wrong.';
-      }
-    }
-    throw error;
   }
 }

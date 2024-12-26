@@ -51,10 +51,10 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     <main className='w-screen py-8 px-48'>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'YouTube', href: '/youtube' },
+          { label: 'Videos', href: '/videos' },
           {
             label: 'Edit Video',
-            href: `/youtube/${id}/edit`,
+            href: `/videos/${id}/edit`,
             active: true,
           },
         ]}
@@ -129,7 +129,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
         ))}
         <div className='mt-6 flex justify-end gap-4'>
           <Link
-            href='/youtube'
+            href='/videos'
             className={clsx(
               'flex h-10 items-center rounded-lg bg-muted px-4 text-sm',
               ' font-medium  transition-colors hover:bg-muted-foreground'

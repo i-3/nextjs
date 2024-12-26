@@ -1,6 +1,5 @@
 'use client';
 
-import { CustomerField } from '@/app/lib/definitions';
 import Link from 'next/link';
 import {
   CheckIcon,
@@ -87,7 +86,7 @@ export default function Form({ videoid }: { videoid: string }) {
 
       <div className='mt-6 flex justify-end gap-4'>
         <Link
-          href={`/youtube/${videoid}`}
+          href={`/videos/${videoid}`}
           className={clsx(
             'flex h-10 items-center rounded-lg bg-muted px-4 text-sm',
             ' font-medium  transition-colors hover:bg-muted-foreground'
