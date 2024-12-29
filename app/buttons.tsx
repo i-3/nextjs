@@ -6,10 +6,9 @@ export function DeleteVideo({ id }: { id: string }) {
     'use server';
     await deleteVideo(id);
   }
-  const deleteVideoWithId = delVid.bind(null, id);
 
   return (
-    <form action={deleteVideoWithId}>
+    <form action={delVid.bind(null, id)}>
       <button className='rounded-md border p-2 hover:bg-muted'>
         <span className='sr-only'>Delete</span>
         <TrashIcon className='w-5' />
@@ -23,10 +22,9 @@ export function DeleteTrainer({ id, ID }: { id: string; ID: string }) {
     'use server';
     await deleteTrainer(id, ID);
   }
-  const deleteTrainerWithId = delTra.bind(null, id, ID);
 
   return (
-    <form action={deleteTrainerWithId}>
+    <form action={delTra.bind(null, id, ID)}>
       <button className='rounded-md border p-2 hover:bg-muted'>
         <span className='sr-only'>Delete</span>
         <TrashIcon className='w-5' />

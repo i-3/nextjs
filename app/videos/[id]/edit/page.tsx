@@ -1,5 +1,4 @@
 import Breadcrumbs from '@/app/ui/breadcrumbs';
-import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 import {
   CheckIcon,
@@ -9,10 +8,10 @@ import {
 } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-// import { sql } from '@vercel/postgres';
-const pool = require('../../../../db');
 import { updateVideo } from '@/app/lib/actions';
 import clsx from 'clsx';
+
+const pool = require('../../../../db');
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   type VideoForm = {
@@ -37,15 +36,14 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
   const id = params.id;
   const video = await fetchVideoByID(id);
-  // console.log(v);
   if (!video) {
     notFound();
   }
+
   async function updVid(id: string, formData: FormData) {
     'use server';
     await updateVideo(id, formData);
   }
-  const updateInvoiceWithId = updVid.bind(null, id);
 
   return (
     <main className='w-screen py-8 px-48'>
@@ -59,8 +57,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
           },
         ]}
       />
-      <form action={updateInvoiceWithId}>
-        {/* <form> */}
+      <form action={updVid.bind(null, id)}>
         {[0, 1, 2].map((i) => (
           <div key={i} className='rounded-md bg-muted p-4 md:p-6'>
             <div className='mb-4'>

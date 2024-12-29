@@ -3,10 +3,10 @@ import { notFound } from 'next/navigation';
 import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
-// import { sql } from '@vercel/postgres';
-const pool = require('../../../../../db');
 import { updateTrainer } from '@/app/lib/actions';
 import clsx from 'clsx';
+
+const pool = require('../../../../../db');
 
 export default async function Page(props: { params: Promise<{ ID: string }> }) {
   type TrainerForm = {
@@ -45,7 +45,6 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
     'use server';
     await updateTrainer(id, formData);
   }
-  const updateInvoiceWithId = updTra.bind(null, ID);
 
   return (
     <main className='w-screen py-8 px-48'>
@@ -63,7 +62,7 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
         ]}
       />
 
-      <form action={updateInvoiceWithId}>
+      <form action={updTra.bind(null, ID)}>
         {/* <form> */}
         {[0, 1, 2, 3].map((i) => (
           <div key={i} className='rounded-md bg-muted p-4 md:p-6'>
