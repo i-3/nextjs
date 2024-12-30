@@ -12,22 +12,27 @@ export default async function Header() {
   const session = await auth();
 
   return (
-    <div className=' h-20 flex justify-end items-center'>
+    <div className='h-16 flex justify-end items-center'>
       {!session?.user ? (
-        <Link
-          href={'/login'}
-          className={clsx(
-            'mx-6 flex h-12 w-12 items-center justify-center',
-            'rounded-full hover:bg-neutral-500'
-          )}
-        >
-          <ArrowRightEndOnRectangleIcon className='w-6' />
-        </Link>
+        <div className='flex items-center'>
+          <Link
+            href={'/login'}
+            className={clsx(
+              'flex mr-12 h-10 w-10 items-center justify-center rounded-full',
+              'hover:bg-neutral-500'
+            )}
+          >
+            <ArrowRightEndOnRectangleIcon className='h-6' />
+          </Link>
+
+          <div className='w-32 '></div>
+        </div>
       ) : (
         <>
           <Links />
 
           <form
+            className='flex items-center'
             action={async () => {
               'use server';
               await signOut();
@@ -35,16 +40,14 @@ export default async function Header() {
           >
             <button
               className={clsx(
-                'flex mx-6 h-12 w-12 items-center justify-center rounded-full',
+                'flex h-10 w-10 items-center justify-center rounded-full',
                 ' hover:bg-neutral-500'
               )}
             >
               <ArrowRightStartOnRectangleIcon className='h-6 text-primary ' />
             </button>
 
-            <div className=' flex absolute w-24 justify-center'>
-              <p className='text-xs text-primary'>User</p>
-            </div>
+            <p className='text-xs text-primary w-32'>User</p>
           </form>
         </>
       )}

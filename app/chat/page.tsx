@@ -8,7 +8,7 @@ export default function Chat() {
 
   return (
     <div className='w-full max-w-md mx-auto'>
-      <div className={clsx(' flex flex-col h-[706px] pl-2 ')}>
+      <div className={clsx('flex flex-col h-[710px] pl-2')}>
         <div className='flex-1 overflow-y-auto'>
           {messages.map((m) => (
             <div
@@ -18,7 +18,7 @@ export default function Chat() {
                 m.role === 'user' ? 'text-primary text-right pl-4' : 'pr-4'
               )}
             >
-              {m.role === 'user' ? 'User:' : 'GroqAI:'}
+              {m.role === 'user' ? 'User:' : 'AI:'}
               {'\n'}
               {m.content}
             </div>
@@ -29,11 +29,11 @@ export default function Chat() {
       <form onSubmit={handleSubmit}>
         <input
           className={clsx(
-            ' w-full max-w-md p-2 rounded shadow-xl border-none',
+            ' fixed bottom-14 w-full max-w-md p-2 rounded shadow-xl border-none',
             'bg-muted'
           )}
           value={input}
-          placeholder='Say something to GroqAI...'
+          placeholder='Say something to AI...'
           onChange={handleInputChange}
         />
       </form>

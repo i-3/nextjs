@@ -29,7 +29,7 @@ export function Links() {
         key={k}
         href={link.href}
         className={clsx(
-          'mx-6 flex h-12 w-12 items-center justify-center',
+          'mr-12 flex h-10 w-10 items-center justify-center',
           'rounded-full hover:bg-neutral-500',
           pathname === link.href && 'text-primary'
         )}
@@ -46,7 +46,7 @@ export function ThemeSwitcher() {
   return (
     <button
       className={clsx(
-        'flex mx-6 h-12 w-12 items-center justify-center',
+        'flex mr-2 h-10 w-10 items-center justify-center',
         ' rounded-full hover:bg-neutral-500'
       )}
       onClick={() => {

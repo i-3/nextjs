@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'Iurii Site',
   },
   description: 'My Next.js demo project.',
-  metadataBase: new URL('http://iurii.1984.lv'),
+  metadataBase: new URL('http://nextjs.1984.lv'),
 };
 
 export default function RootLayout({
@@ -32,7 +32,7 @@ export default function RootLayout({
 
             <main className='flex flex-1 bg-background'>{children}</main>
 
-            <footer className='flex h-20 items-center justify-center'>
+            <footer className='flex h-12 items-center justify-center'>
               <a
                 href='https://freedns.afraid.org'
                 target='_blank'
