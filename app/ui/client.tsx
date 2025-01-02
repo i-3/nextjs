@@ -6,6 +6,7 @@ import {
   ChatBubbleLeftRightIcon,
   MoonIcon,
   SunIcon,
+  DocumentTextIcon,
 } from '@heroicons/react/24/outline';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
@@ -19,6 +20,7 @@ export function Links() {
     { href: '/', icon: HomeModernIcon },
     { href: '/videos', icon: LanguageIcon },
     { href: '/chat', icon: ChatBubbleLeftRightIcon },
+    { href: '/doc', icon: DocumentTextIcon },
   ];
 
   return links.map((link, k) => {
@@ -50,7 +52,8 @@ export function ThemeSwitcher() {
         ' rounded-full hover:bg-neutral-500'
       )}
       onClick={() => {
-        theme == 'dark' ? setTheme('light') : setTheme('dark');
+        if (theme == 'dark') setTheme('light');
+        else setTheme('dark');
       }}
     >
       {theme == 'dark' ? (

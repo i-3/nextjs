@@ -1,25 +1,16 @@
 import { lusitana } from '@/app/ui/fonts';
-import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
-import { Suspense } from 'react';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { deleteVideo } from '@/app/lib/actions';
+import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { DeleteVideo } from '../buttons';
 import clsx from 'clsx';
-
-const pool = require('../../db');
+import { pool } from '../../db';
 
 export const metadata: Metadata = {
   title: 'Videos',
 };
 
-export default async function Page(props: {
-  searchParams?: Promise<{
-    query?: string;
-    page?: string;
-  }>;
-}) {
+export default async function Page() {
   type Video = {
     id: string;
     uploaded: string;
@@ -79,7 +70,7 @@ export default async function Page(props: {
         <div className='flex-1 overflow-y-auto'>
           <table className='hidden min-w-full  md:table'>
             <tbody className=''>
-              {videos?.map((video: any) => (
+              {videos?.map((video: Video) => (
                 <tr
                   key={video.id}
                   className='w-full bg-background border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'

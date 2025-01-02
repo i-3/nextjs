@@ -1,6 +1,5 @@
 import bcrypt from 'bcrypt';
-// import { db } from '@vercel/postgres';
-const pool = require('../../db');
+import { pool } from '../../db';
 import { invoices, customers, revenue, users } from '../lib/placeholder-data';
 
 // const client = await db.connect();

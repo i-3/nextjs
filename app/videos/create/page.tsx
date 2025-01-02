@@ -1,16 +1,11 @@
 'use client';
 
 import Breadcrumbs from '@/app/ui/breadcrumbs';
-import { fetchCustomers } from '@/app/lib/data';
 import { createVideo, State_ } from '@/app/lib/actions';
 import { useActionState } from 'react';
 import { Button } from '@/app/ui/button';
 import Link from 'next/link';
-import {
-  CheckIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-} from '@heroicons/react/24/outline';
+import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 
 export default function Page() {

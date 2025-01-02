@@ -3,9 +3,9 @@
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { z } from 'zod';
-const pool = require('../../db');
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { pool } from '../../db';
 
 export async function authenticate(
   prevState: string | undefined,
@@ -25,23 +25,6 @@ export async function authenticate(
     throw error;
   }
 }
-
-const FormSchema = z.object({
-  id: z.string(),
-  customerId: z.string({
-    invalid_type_error: 'Please select a customer.',
-  }),
-  amount: z.coerce
-    .number()
-    .gt(0, { message: 'Please enter an amount greater than $0.' }),
-  status: z.enum(['pending', 'paid'], {
-    invalid_type_error: 'Please select an invoice status.',
-  }),
-  date: z.string(),
-});
-
-const CreateInvoice = FormSchema.omit({ id: true, date: true });
-const UpdateInvoice = FormSchema.omit({ id: true, date: true });
 
 const FormSchema_ = z.object({
   id: z.string(),

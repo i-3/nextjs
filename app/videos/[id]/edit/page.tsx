@@ -1,26 +1,14 @@
 import Breadcrumbs from '@/app/ui/breadcrumbs';
 import { notFound } from 'next/navigation';
-import {
-  CheckIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
-  UserCircleIcon,
-} from '@heroicons/react/24/outline';
+import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { updateVideo } from '@/app/lib/actions';
 import clsx from 'clsx';
 
-const pool = require('../../../../db');
+import { pool } from '../../../../db';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
-  type VideoForm = {
-    id: string;
-    uploaded: string;
-    title: string;
-    videoid: string;
-    date: string;
-  };
   async function fetchVideoByID(id: string) {
     try {
       const data = await pool.query(`

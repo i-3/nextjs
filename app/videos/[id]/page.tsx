@@ -1,14 +1,9 @@
-import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data';
-import { notFound } from 'next/navigation';
-import { lusitana } from '@/app/ui/fonts';
 import Link from 'next/link';
-import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
-import { deleteTrainer } from '@/app/lib/actions';
+import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { DeleteTrainer } from '../../buttons';
 import Breadcrumbs from '@/app/ui/breadcrumbs';
 import clsx from 'clsx';
-
-const pool = require('../../../db');
+import { pool } from '../../../db';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -86,7 +81,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
               </thead>
 
               <tbody className=''>
-                {trainers?.map((trainer: any) => (
+                {trainers?.map((trainer: Trainer) => (
                   <tr
                     key={trainer.title}
                     className={clsx(

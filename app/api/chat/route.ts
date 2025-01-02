@@ -1,7 +1,6 @@
 // import { openai } from '@ai-sdk/openai';
 import { groq } from '@ai-sdk/groq';
-import { streamText, tool } from 'ai';
-import { z } from 'zod';
+import { streamText } from 'ai';
 
 // Allow streaming responses up to 30 seconds
 export const maxDuration = 30;

@@ -1,15 +1,7 @@
-import { lusitana } from '@/app/ui/fonts';
-import { Suspense } from 'react';
-import {
-  RevenueChartSkeleton,
-  LatestInvoicesSkeleton,
-  CardsSkeleton,
-} from '@/app/ui/skeletons';
-
-export default async function Page() {
+export default async function Home() {
   return (
-    <div className=' bg-background w-screen flex justify-center items-center'>
-      <h1 className={`${lusitana.className}  text-2xl`}>Home Page</h1>
-    </div>
+    <main className=' flex min-h-screen flex-col items-center p-24 w-screen'>
+      {"User's Landing Page"}
+    </main>
   );
 }

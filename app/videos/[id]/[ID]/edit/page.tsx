@@ -5,19 +5,9 @@ import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { updateTrainer } from '@/app/lib/actions';
 import clsx from 'clsx';
-
-const pool = require('../../../../../db');
+import { pool } from '../../../../../db';
 
 export default async function Page(props: { params: Promise<{ ID: string }> }) {
-  type TrainerForm = {
-    id: string;
-    videoid: string;
-    title: string;
-    start: string;
-    stop: string;
-    date: string;
-  };
-
   async function fetchTrainerByID(ID: string) {
     try {
       const data = await pool.query(`
