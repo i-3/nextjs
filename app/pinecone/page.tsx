@@ -39,11 +39,18 @@ const VectorDBPage = () => {
     setProgress(0);
     setFilename('');
     setisUploading(true);
+
     const response = await fetch('api/updatedatabase', {
       method: 'POST',
       body: JSON.stringify({ indexname, namespace }),
     });
-    // console.log(response);
+
+    console.log('onStartUpload => ', response);
+    if (!response) {
+      setisUploading(false);
+      return;
+    }
+
     await processStreamedProgress(response);
   };
 
