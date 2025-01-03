@@ -83,7 +83,9 @@ const VectorDBPage = () => {
       <Card>
         <CardHeader>
           <CardTitle>Update Knowledge Base</CardTitle>
-          <CardDescription>Add new documents to your vector DB</CardDescription>
+          <CardDescription>
+            Add new documents to your vector DB Pinecone
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <div className=' grid grid-cols-3 gap-4'>
@@ -110,7 +112,7 @@ const VectorDBPage = () => {
                   <Input
                     value={indexname}
                     onChange={(e) => setIndexname(e.target.value)}
-                    // placeholder='index name'
+                    placeholder='index-one'
                     disabled={isUploading}
                     className=' disabled:cursor-default'
                   />
@@ -120,7 +122,7 @@ const VectorDBPage = () => {
                   <Input
                     value={namespace}
                     onChange={(e) => setNamespace(e.target.value)}
-                    // placeholder='namespace'
+                    placeholder='testspace'
                     disabled={isUploading}
                     className=' disabled:cursor-default'
                   />

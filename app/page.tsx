@@ -1,7 +1,9 @@
-export default async function Home() {
+import { lusitana } from '@/app/ui/fonts';
+
+export default async function Page() {
   return (
-    <main className=' flex min-h-screen flex-col items-center p-24 w-screen'>
-      {"User's Landing Page"}
-    </main>
+    <div className=' bg-background w-screen flex justify-center items-center'>
+      <h1 className={`${lusitana.className}  text-2xl`}>Home Page</h1>
+    </div>
   );
 }

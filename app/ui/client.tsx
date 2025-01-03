@@ -1,7 +1,7 @@
 'use client';
 
 import {
-  HomeModernIcon,
+  HomeIcon,
   LanguageIcon,
   ChatBubbleLeftRightIcon,
   MoonIcon,
@@ -17,10 +17,10 @@ export function Links() {
   const pathname = usePathname();
 
   const links = [
-    { href: '/', icon: HomeModernIcon },
+    { href: '/', icon: HomeIcon },
     { href: '/videos', icon: LanguageIcon },
     { href: '/chat', icon: ChatBubbleLeftRightIcon },
-    { href: '/doc', icon: DocumentTextIcon },
+    { href: '/pinecone', icon: DocumentTextIcon },
   ];
 
   return links.map((link, k) => {
