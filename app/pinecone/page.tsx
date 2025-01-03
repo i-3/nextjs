@@ -46,7 +46,7 @@ const VectorDBPage = () => {
     });
 
     console.log('onStartUpload => ', response);
-    if (!response) {
+    if (!response.ok) {
       setisUploading(false);
       return;
     }
