@@ -32,7 +32,7 @@ async function handleUpload(
     namespace,
     docs,
     (filename, totalChunks, chunksUpserted, isComplete) => {
-      // console.log(`${filename}-${totalChunks}-${chunksUpserted}-${isComplete}`);
+      console.log(`${filename}-${totalChunks}-${chunksUpserted}-${isComplete}`);
 
       if (!isComplete) {
         res.write(
