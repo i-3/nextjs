@@ -26,15 +26,13 @@ async function handleUpload(
   const docs = await loader.load();
   const client = new Pinecone({ apiKey: process.env.PINECONE_API_KEY! });
 
-  console.log('first_______________________________________________');
-
   await updateVectorDB(
     client,
     indexname,
     namespace,
     docs,
     (filename, totalChunks, chunksUpserted, isComplete) => {
-      console.log(`${filename}-${totalChunks}-${chunksUpserted}-${isComplete}`);
+      // console.log(`${filename}-${totalChunks}-${chunksUpserted}-${isComplete}`);
 
       if (!isComplete) {
         res.write(

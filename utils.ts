@@ -4,7 +4,7 @@ import {
   RecordMetadata,
 } from '@pinecone-database/pinecone';
 import { Document } from 'langchain/document';
-import { FeatureExtractionPipeline, pipeline } from '@huggingface/transformers';
+import { FeatureExtractionPipeline, pipeline } from '@xenova/transformers';
 import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter';
 import { batchsize } from './config';
 
@@ -30,13 +30,16 @@ export async function updateVectorDB(
   ) => void
 ) {
   callback = progressCallback;
-  const modelname = 'mixedbread-ai/mxbai-embed-large-v1';
-  const extractor = await pipeline('feature-extraction', modelname, {
-    // quantized: false,
-  });
+
+  const extractor = await pipeline(
+    'feature-extraction',
+    'mixedbread-ai/mxbai-embed-large-v1',
+    {
+      quantized: false,
+    }
+  );
 
   // console.log(extractor);
-  console.log('second_______________________________________________');
 
   for (const doc of docs) {
     await processDocument(client, indexname, namespace, doc, extractor);

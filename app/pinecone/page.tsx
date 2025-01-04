@@ -28,6 +28,7 @@ const VectorDBPage = () => {
     const response = await fetch('api/getfilelist', { method: 'GET' });
     const filenames = await response.json();
     // console.log(filenames);
+
     const resultString = (filenames as [])
       .map((filename) => `📄 ${filename}`)
       .join('\n');
@@ -45,9 +46,7 @@ const VectorDBPage = () => {
       body: JSON.stringify({ indexname, namespace }),
     });
 
-    console.log('onStartUpload => ', response);
-    if (response.ok) await processStreamedProgress(response);
-    else setisUploading(false);
+    processStreamedProgress(response);
   };
 
   async function processStreamedProgress(response: Response) {
