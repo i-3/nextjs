@@ -46,12 +46,7 @@ const VectorDBPage = () => {
     });
 
     console.log('onStartUpload => ', response);
-    if (!response.ok) {
-      setisUploading(false);
-      return;
-    }
-
-    await processStreamedProgress(response);
+    if (response.ok) await processStreamedProgress(response);
   };
 
   async function processStreamedProgress(response: Response) {
