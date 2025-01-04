@@ -31,13 +31,13 @@ export async function updateVectorDB(
 ) {
   callback = progressCallback;
 
+  console.log('Before');
   const extractor = await pipeline(
     'feature-extraction',
     'mixedbread-ai/mxbai-embed-large-v1',
-    {
-      quantized: false,
-    }
+    { quantized: false }
   );
+  console.log('After');
 
   // console.log(extractor);
 
