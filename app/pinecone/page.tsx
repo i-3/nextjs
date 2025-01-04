@@ -47,6 +47,7 @@ const VectorDBPage = () => {
 
     console.log('onStartUpload => ', response);
     if (response.ok) await processStreamedProgress(response);
+    else setisUploading(false);
   };
 
   async function processStreamedProgress(response: Response) {

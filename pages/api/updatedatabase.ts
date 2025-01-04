@@ -8,6 +8,7 @@ import { updateVectorDB } from '@/utils';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method == 'POST') {
     const { indexname, namespace } = JSON.parse(req.body);
+
     await handleUpload(indexname, namespace, res);
   }
 };
@@ -24,6 +25,8 @@ async function handleUpload(
 
   const docs = await loader.load();
   const client = new Pinecone({ apiKey: process.env.PINECONE_API_KEY! });
+
+  console.log('first_______________________________________________');
 
   await updateVectorDB(
     client,

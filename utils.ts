@@ -36,10 +36,12 @@ export async function updateVectorDB(
   });
 
   // console.log(extractor);
+  console.log('second_______________________________________________');
 
   for (const doc of docs) {
     await processDocument(client, indexname, namespace, doc, extractor);
   }
+
   if (callback != undefined) {
     callback('filename', totalDocumentChunks, totalDocumentChunksUpseted, true);
   }
@@ -64,6 +66,7 @@ async function processDocument(
   while (documentChunks.length > 0) {
     chunkBatchIndex++;
     const chunkBatch = documentChunks.splice(0, batchsize);
+
     await processOneBatch(
       client,
       indexname,
