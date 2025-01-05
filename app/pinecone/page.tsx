@@ -44,7 +44,6 @@ const VectorDBPage = () => {
     const response = await fetch('api/updatedatabase', {
       method: 'POST',
       body: JSON.stringify({ indexname, namespace }),
-      signal: AbortSignal.timeout(5000),
     });
 
     processStreamedProgress(response);
