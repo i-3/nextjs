@@ -3,8 +3,7 @@ import { authConfig } from './auth.config';
 import Credentials from 'next-auth/providers/credentials';
 import { z } from 'zod';
 import bcrypt from 'bcrypt';
-
-const pool = require('./db');
+import { pool } from './db';
 
 export type User = {
   id: string;

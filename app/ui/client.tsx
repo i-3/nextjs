@@ -20,7 +20,6 @@ export function Links() {
     { href: '/', icon: HomeIcon },
     { href: '/videos', icon: LanguageIcon },
     { href: '/chat', icon: ChatBubbleLeftRightIcon },
-    { href: '/pinecone', icon: DocumentTextIcon },
   ];
 
   return links.map((link, k) => {
