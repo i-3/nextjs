@@ -36,7 +36,7 @@ export async function updateVectorDB(
   try {
     extractor = await pipeline(
       'feature-extraction',
-      'mixedbread-ai/mxbai-embed-large-v1',
+      'mixedbread-ai/mxbai-embed-large-v1_',
       { quantized: false }
     );
   } catch (error) {
