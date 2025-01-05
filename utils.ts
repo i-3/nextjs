@@ -33,22 +33,16 @@ export async function updateVectorDB(
 ) {
   callback = progressCallback;
 
-  try {
-    extractor = await pipeline(
-      'feature-extraction',
-      'mixedbread-ai/mxbai-embed-large-v1',
-      { quantized: false }
-    );
-  } catch (error) {
-    console.log(error);
-  }
+  extractor = await pipeline(
+    'feature-extraction',
+    'mixedbread-ai/mxbai-embed-large-v1',
+    { quantized: false }
+  );
 
   // console.log(extractor);
 
-  if (extractor) {
-    for (const doc of docs) {
-      await processDocument(client, indexname, namespace, doc, extractor);
-    }
+  for (const doc of docs) {
+    await processDocument(client, indexname, namespace, doc, extractor);
   }
 
   if (callback != undefined) {
