@@ -17,6 +17,8 @@ let callback: (
 let totalDocumentChunks: number;
 let totalDocumentChunksUpseted!: number;
 
+let extractor: FeatureExtractionPipeline;
+
 export async function updateVectorDB(
   client: Pinecone,
   indexname: string,
@@ -31,18 +33,22 @@ export async function updateVectorDB(
 ) {
   callback = progressCallback;
 
-  console.log('Before');
-  const extractor = await pipeline(
-    'feature-extraction',
-    'mixedbread-ai/mxbai-embed-large-v1',
-    { quantized: false }
-  );
-  console.log('After');
+  try {
+    extractor = await pipeline(
+      'feature-extraction',
+      'mixedbread-ai/mxbai-embed-large-v1_',
+      { quantized: false }
+    );
+  } catch (error) {
+    console.log(error);
+  }
 
   // console.log(extractor);
 
-  for (const doc of docs) {
-    await processDocument(client, indexname, namespace, doc, extractor);
+  if (extractor) {
+    for (const doc of docs) {
+      await processDocument(client, indexname, namespace, doc, extractor);
+    }
   }
 
   if (callback != undefined) {
