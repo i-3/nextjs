@@ -1,8 +1,7 @@
 import Link from 'next/link';
-import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { Pencil, Plus } from 'lucide-react';
 import { DeleteTrainer } from '../../buttons';
 import Breadcrumbs from '@/app/ui/breadcrumbs';
-import clsx from 'clsx';
 import { pool } from '../../../db';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
@@ -52,12 +51,9 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
         <Link
           href={`/videos/${videoId}/create`}
-          className={clsx(
-            'flex h-10 items-center rounded-lg bg-muted px-4 text-sm',
-            ' font-medium transition-colors hover:bg-primary '
-          )}
+          className='flex h-10 items-center rounded-lg bg-muted px-4 text-sm font-medium transition-colors hover:bg-primary '
         >
-          <PlusIcon className='h-5 ' />
+          <Plus className='h-5 ' />
         </Link>
       </div>
 
@@ -84,14 +80,9 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                 {trainers?.map((trainer: Trainer) => (
                   <tr
                     key={trainer.title}
-                    className={clsx(
-                      'w-full bg-background border-b py-3 text-sm',
-                      ' last-of-type:border-none',
-                      ' [&:first-child>td:first-child]:rounded-tl-lg',
-                      ' [&:first-child>td:last-child]:rounded-tr-lg',
-                      ' [&:last-child>td:first-child]:rounded-bl-lg',
-                      ' [&:last-child>td:last-child]:rounded-br-lg'
-                    )}
+                    className='w-full bg-background border-b py-3 text-sm
+                    last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg
+                    [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg'
                   >
                     <td className='whitespace-nowrap py-3 pl-6 pr-3'>
                       <a
@@ -120,7 +111,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
                           href={`/videos/${videoId}/${trainer.id}/edit`}
                           className='rounded-md border p-2 hover:bg-muted'
                         >
-                          <PencilIcon className='w-5' />
+                          <Pencil className='w-5' />
                         </Link>
 
                         <DeleteTrainer id={videoId} ID={trainer.id} />

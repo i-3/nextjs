@@ -63,15 +63,6 @@ const FormSchema__ = z.object({
 const CreateTrainer = FormSchema__.omit({ id: true, date: true });
 const UpdateTrainer = FormSchema__.omit({ id: true, date: true });
 
-export type State = {
-  errors?: {
-    customerId?: string[];
-    amount?: string[];
-    status?: string[];
-  };
-  message?: string | null;
-};
-
 export type State_ = {
   errors?: {
     uploaded?: string[];

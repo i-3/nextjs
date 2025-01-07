@@ -1,4 +1,4 @@
-import { TrashIcon } from '@heroicons/react/24/outline';
+import { Trash2 } from 'lucide-react';
 import { deleteVideo, deleteTrainer } from '@/app/lib/actions';
 
 export function DeleteVideo({ id }: { id: string }) {
@@ -11,7 +11,7 @@ export function DeleteVideo({ id }: { id: string }) {
     <form action={delVid.bind(null, id)}>
       <button className='rounded-md border p-2 hover:bg-muted'>
         <span className='sr-only'>Delete</span>
-        <TrashIcon className='w-5' />
+        <Trash2 className='w-5' />
       </button>
     </form>
   );
@@ -27,7 +27,7 @@ export function DeleteTrainer({ id, ID }: { id: string; ID: string }) {
     <form action={delTra.bind(null, id, ID)}>
       <button className='rounded-md border p-2 hover:bg-muted'>
         <span className='sr-only'>Delete</span>
-        <TrashIcon className='w-5' />
+        <Trash2 className='w-5' />
       </button>
     </form>
   );

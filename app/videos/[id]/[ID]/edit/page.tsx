@@ -1,10 +1,9 @@
 import Breadcrumbs from '@/app/ui/breadcrumbs';
 import { notFound } from 'next/navigation';
-import { CurrencyDollarIcon } from '@heroicons/react/24/outline';
+import { DollarSign } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/app/ui/button';
 import { updateTrainer } from '@/app/lib/actions';
-import clsx from 'clsx';
 import { pool } from '../../../../../db';
 
 export default async function Page(props: { params: Promise<{ ID: string }> }) {
@@ -100,19 +99,11 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
                       (i == 3 && 'Enter a stop') ||
                       ''
                     }
-                    className={clsx(
-                      'bg-background  peer block w-full rounded-md',
-                      ' border  py-2 pl-10 text-sm outline-2',
-                      ' placeholder:text-muted-foreground'
-                    )}
+                    className='bg-background  peer block w-full rounded-md border  py-2 pl-10 text-sm outline-2 placeholder:text-muted-foreground'
+
                     // required
                   />
-                  <CurrencyDollarIcon
-                    className={clsx(
-                      'pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px]',
-                      ' -translate-y-1/2 '
-                    )}
-                  />
+                  <DollarSign className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 ' />
                 </div>
               </div>
 
@@ -131,10 +122,7 @@ export default async function Page(props: { params: Promise<{ ID: string }> }) {
         <div className='mt-6 flex justify-end gap-4'>
           <Link
             href={`/videos/${trainer.videoid}`}
-            className={clsx(
-              'flex h-10 items-center rounded-lg bg-muted px-4 text-sm',
-              ' font-medium  transition-colors hover:bg-muted-foreground'
-            )}
+            className='flex h-10 items-center rounded-lg bg-muted px-4 text-sm font-medium  transition-colors hover:bg-muted-foreground'
           >
             Cancel
           </Link>

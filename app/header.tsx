@@ -1,58 +1,41 @@
-import clsx from 'clsx';
-import {
-  ArrowRightStartOnRectangleIcon,
-  ArrowRightEndOnRectangleIcon,
-} from '@heroicons/react/24/outline';
+import { LogIn, LogOut } from 'lucide-react';
 import { signOut } from '@/auth';
-import { Links, ThemeSwitcher } from './ui/client';
+import { Links } from './ui/links';
 import Link from 'next/link';
 import { auth } from '../auth';
+import { ModeToggle } from '@/components/mode-toggle';
 
 export default async function Header() {
   const session = await auth();
 
   return (
-    <div className='h-16 flex justify-end items-center'>
+    <div className='md:w-96 md:self-center  h-16 flex  justify-between  items-center'>
+      {session?.user && <Links />}
+
       {!session?.user ? (
-        <div className='flex items-center'>
-          <Link
-            href={'/login'}
-            className={clsx(
-              'flex mr-12 h-10 w-10 items-center justify-center rounded-full',
-              'hover:bg-neutral-500'
-            )}
-          >
-            <ArrowRightEndOnRectangleIcon className='h-6' />
-          </Link>
-
-          <div className='w-32 '></div>
-        </div>
+        <Link
+          href={'/login'}
+          className=' absolute right-16 flex h-12 w-12 items-center justify-center
+          hover:bg-muted'
+        >
+          <LogIn />
+        </Link>
       ) : (
-        <>
-          <Links />
-
-          <form
-            className='flex items-center'
-            action={async () => {
-              'use server';
-              await signOut();
-            }}
-          >
-            <button
-              className={clsx(
-                'flex h-10 w-10 items-center justify-center rounded-full',
-                ' hover:bg-neutral-500'
-              )}
-            >
-              <ArrowRightStartOnRectangleIcon className='h-6 text-primary ' />
-            </button>
-
-            <p className='text-xs text-primary w-32'>User</p>
-          </form>
-        </>
+        <form
+          action={async () => {
+            'use server';
+            await signOut();
+          }}
+          className='md:absolute md:right-16 flex h-12 w-12 items-center justify-center
+          hover:bg-muted'
+        >
+          <button>
+            <LogOut className='scale-75 md:scale-100' />
+          </button>
+        </form>
       )}
 
-      <ThemeSwitcher />
+      <ModeToggle />
     </div>
   );
 }

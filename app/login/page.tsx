@@ -3,14 +3,8 @@
 import { lusitana } from '@/app/ui/fonts';
 import { authenticate } from '@/app/lib/actions';
 import { useActionState } from 'react';
-import {
-  AtSymbolIcon,
-  KeyIcon,
-  ExclamationCircleIcon,
-  ArrowRightIcon,
-} from '@heroicons/react/24/outline';
+import { ArrowRight, AtSign, CircleAlert, Key } from 'lucide-react';
 import { Button } from '../ui/button';
-import clsx from 'clsx';
 
 export default function LoginPage() {
   const [errorMessage, formAction, isPending] = useActionState(
@@ -41,22 +35,14 @@ export default function LoginPage() {
 
               <div className='relative'>
                 <input
-                  className={clsx(
-                    'peer block w-full rounded-md border  py-[9px] pl-10 text-sm',
-                    ' outline-2 placeholder:text-neutral-500'
-                  )}
+                  className='peer block w-full rounded-md border  py-[9px] pl-10 text-sm outline-2 placeholder:text-neutral-500'
                   id='email'
                   type='email'
                   name='email'
                   placeholder='Enter your email address'
                   required
                 />
-                <AtSymbolIcon
-                  className={clsx(
-                    'pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px]',
-                    ' -translate-y-1/2 text-neutral-500 peer-focus:text-foreground'
-                  )}
-                />
+                <AtSign className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-neutral-500 peer-focus:text-foreground' />
               </div>
             </div>
 
@@ -69,10 +55,7 @@ export default function LoginPage() {
               </label>
               <div className='relative'>
                 <input
-                  className={clsx(
-                    'peer block w-full rounded-md border  py-[9px] pl-10 text-sm',
-                    ' outline-2 placeholder:text-neutral-500'
-                  )}
+                  className='peer block w-full rounded-md border  py-[9px] pl-10 text-sm outline-2 placeholder:text-neutral-500'
                   id='password'
                   type='password'
                   name='password'
@@ -80,18 +63,13 @@ export default function LoginPage() {
                   required
                   minLength={6}
                 />
-                <KeyIcon
-                  className={clsx(
-                    'pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px]',
-                    ' -translate-y-1/2 text-neutral-500 peer-focus:text-foreground'
-                  )}
-                />
+                <Key className='pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-neutral-500 peer-focus:text-foreground' />
               </div>
             </div>
           </div>
 
           <Button className='mt-8 w-full' aria-disabled={isPending}>
-            Log in <ArrowRightIcon className='ml-auto h-5 w-5 ' />
+            Log in <ArrowRight className='ml-auto h-5 w-5 ' />
           </Button>
 
           <div
@@ -101,7 +79,7 @@ export default function LoginPage() {
           >
             {errorMessage && (
               <>
-                <ExclamationCircleIcon className='h-5 w-5 text-red-500' />
+                <CircleAlert className='h-5 w-5 text-red-500' />
                 <p className='text-sm text-red-500'>{errorMessage}</p>
               </>
             )}

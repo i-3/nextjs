@@ -2,12 +2,12 @@ import '@/app/global.css';
 import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
 import Header from '@/app/header';
-import { ThemeProvider } from './themeProvider';
+import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Iurii Site',
-    default: 'Iurii Site',
+    template: '%s | Demo Website',
+    default: 'Demo Website',
   },
   description: 'My Next.js demo project.',
   metadataBase: new URL('http://nextjs.1984.lv'),
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider
           attribute='class'
-          defaultTheme='dark'
+          defaultTheme='system'
           enableSystem
           disableTransitionOnChange
         >

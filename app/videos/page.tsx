@@ -1,10 +1,9 @@
 import { lusitana } from '@/app/ui/fonts';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { PencilIcon, PlusIcon } from '@heroicons/react/24/outline';
 import { DeleteVideo } from '../buttons';
-import clsx from 'clsx';
 import { pool } from '../../db';
+import { Pencil, Plus } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Videos',
@@ -41,13 +40,9 @@ export default async function Page() {
       <div className='flex items-center justify-between mt-4'>
         <Link
           href='/videos/create'
-          className={clsx(
-            'flex h-10 items-center rounded-lg bg-muted',
-            ' px-4 text-sm font-medium  transition-colors',
-            ' hover:bg-primary '
-          )}
+          className='flex h-10 items-center rounded-lg bg-muted px-4 text-sm font-medium  transition-colors hover:bg-primary '
         >
-          <PlusIcon className='h-5 ' />
+          <Plus className='h-5 ' />
         </Link>
       </div>
 
@@ -94,7 +89,7 @@ export default async function Page() {
                         href={`/videos/${video.id}/edit`}
                         className='rounded-md border p-2 hover:bg-muted'
                       >
-                        <PencilIcon className='w-5' />
+                        <Pencil className='w-5' />
                       </Link>
 
                       <DeleteVideo id={video.id} />
