@@ -30,7 +30,7 @@ export function ModeToggle() {
           <span className='sr-only'>Toggle theme</span>
         </Button> */}
         <div
-          className='md:absolute  md:right-2 flex hover:bg-muted h-12 w-12
+          className='md:absolute  md:right-8 flex hover:bg-muted h-12 w-12
         items-center justify-center'
         >
           <Sun className='scale-75 md:scale-100 dark:hidden' />

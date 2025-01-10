@@ -1,6 +1,6 @@
 'use client';
 
-import { House, Languages, MessagesSquare } from 'lucide-react';
+import { House, Languages, MessagesSquare, Table2 } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
@@ -8,8 +8,8 @@ export function Links() {
   const pathname = usePathname();
 
   const links = [
-    { href: '/', icon: House },
-    { href: '/videos', icon: Languages },
+    { href: '/', icon: Languages },
+    { href: '/payments', icon: Table2 },
     { href: '/chat', icon: MessagesSquare },
   ];
 

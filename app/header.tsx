@@ -9,13 +9,13 @@ export default async function Header() {
   const session = await auth();
 
   return (
-    <div className='md:w-96 md:self-center  h-16 flex  justify-between  items-center'>
+    <div className=' px-4 md:w-96 md:self-center h-16 flex justify-between items-center'>
       {session?.user && <Links />}
 
       {!session?.user ? (
         <Link
           href={'/login'}
-          className=' absolute right-16 flex h-12 w-12 items-center justify-center
+          className=' absolute right-28 flex h-12 w-12 items-center justify-center
           hover:bg-muted'
         >
           <LogIn />
@@ -26,7 +26,7 @@ export default async function Header() {
             'use server';
             await signOut();
           }}
-          className='md:absolute md:right-16 flex h-12 w-12 items-center justify-center
+          className='md:absolute md:right-28 flex h-12 w-12 items-center justify-center
           hover:bg-muted'
         >
           <button>
