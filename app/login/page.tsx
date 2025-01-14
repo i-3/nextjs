@@ -1,7 +1,7 @@
 'use client';
 
 import { lusitana } from '@/app/ui/fonts';
-import { authenticate } from '@/app/lib/actions';
+import { authenticate } from '@/lib/actions';
 import { useActionState } from 'react';
 import { ArrowRight, AtSign, CircleAlert, Key } from 'lucide-react';
 import { Button } from '../ui/button';

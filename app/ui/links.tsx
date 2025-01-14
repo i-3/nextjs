@@ -9,7 +9,7 @@ export function Links() {
 
   const links = [
     { href: '/', icon: Languages },
-    { href: '/payments', icon: Table2 },
+    { href: '/vacancies', icon: Table2 },
     { href: '/chat', icon: MessagesSquare },
   ];
 
