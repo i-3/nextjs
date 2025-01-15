@@ -25,7 +25,7 @@ export default function Chat() {
           </div>
         ) : (
           <div className='flex w-full justify-center items-center text-neutral-500'>
-            Groq Chatbot
+            Groq Chat
           </div>
         )}
       </div>
@@ -34,7 +34,7 @@ export default function Chat() {
         <input
           className=' static w-full p-2 rounded-md shadow-xl border mt-4 bg-background'
           value={input}
-          placeholder='Say something to AI...'
+          placeholder='Say something to AI ...'
           onChange={handleInputChange}
         />
       </form>

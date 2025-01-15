@@ -31,7 +31,7 @@ const items = [
     icon: Table2,
   },
   {
-    title: 'Groq chatbot',
+    title: 'Groq Chat',
     url: '/chat',
     icon: MessagesSquare,
   },
