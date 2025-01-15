@@ -96,15 +96,15 @@ export default function Page() {
   }
 
   return (
-    <div className='mt-4 flex flex-col w-[512px] mx-auto '>
-      <div className='mb-8 rounded-xl bg-muted p-4'>
-        <div className='flex justify-between p-4 rounded-md '>
-          <label className=' font-bold'>
-            Select the language you will speak
-          </label>
-
+    <main className='w-full pt-24'>
+      <div
+        className=' border flex flex-col max-w-md
+      mx-auto rounded-md p-4'
+      >
+        <div className='border p-4 flex justify-between rounded-md '>
+          Select the language you will speak
           <select
-            className=' text-[.7rem] rounded-sm border-zinc-300 py-2 px-2'
+            className=' bg-muted text-[.7rem] rounded-sm p-2'
             name='language'
             value={language}
             onChange={(event) => setLanguage(event.target.value)}
@@ -115,13 +115,10 @@ export default function Page() {
           </select>
         </div>
 
-        <div className=' mt-4 max-w-lg rounded-md p-4'>
-          <label className=' font-bold '>
-            Select the voice that will speak the translation
-          </label>
-
+        <div className='mt-4 border p-4  rounded-md w-full'>
+          Select the voice that will speak the translation
           <select
-            className=' mt-2 w-full text-[.7rem] rounded-sm py-2 px-2'
+            className='bg-muted mt-2 w-full text-[.7rem] rounded-sm p-2 '
             name='voice'
             value={voice?.lang}
             onChange={(event) => {
@@ -139,29 +136,29 @@ export default function Page() {
             })}
           </select>
         </div>
-      </div>
 
-      <button
-        className={` text-white flex items-center justify-center mx-auto w-32
-          h-32 font-semibold text-sm  rounded-full  ${
-            isActive ? ' bg-red-500' : 'hover:bg-red-900 bg-red-950'
-          }`}
-        onClick={handleOnRecord}
-      >
-        {isActive ? <Mic /> : <MicOff />}
-      </button>
+        <button
+          className={`mt-8 text-white flex items-center justify-center
+            mx-auto w-32 h-32 font-semibold text-sm  rounded-full  ${
+              isActive ? ' bg-red-500' : 'hover:bg-red-900 bg-red-950'
+            }`}
+          onClick={handleOnRecord}
+        >
+          {isActive ? <Mic /> : <MicOff />}
+        </button>
 
-      <div className='flex flex-col w-full mt-8'>
-        <div className='bg-muted w-72 ml-56 p-2 rounded-md right-0 '>
-          <p className=' text-primary'>What you said:</p>
-          {text}
+        <div className='flex flex-col mt-8'>
+          <div className=' border w-72 p-2 rounded-md self-end'>
+            <p className=' text-primary'>What you said:</p>
+            {text}
+          </div>
+
+          <div className=' border max-w-72 mt-4 p-2 rounded-md'>
+            <p className='text-primary'>What Groq translated:</p>
+            {translation}
+          </div>
         </div>
-
-        <div className=' bg-muted w-72 mt-8 p-2 rounded-md'>
-          <p className='text-primary'>What Groq translated:</p>
-          {translation}
-        </div>
       </div>
-    </div>
+    </main>
   );
 }

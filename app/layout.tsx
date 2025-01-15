@@ -1,8 +1,10 @@
 import '@/app/global.css';
 import { inter } from '@/app/ui/fonts';
 import { Metadata } from 'next';
-import Header from '@/app/header';
 import { ThemeProvider } from '@/components/theme-provider';
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
+import { AppSidebar } from '@/components/app-sidebar';
+import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: {
@@ -10,14 +12,17 @@ export const metadata: Metadata = {
     default: 'Demo Website',
   },
   description: 'My Next.js demo project.',
-  metadataBase: new URL('http://nextjs.1984.lv'),
+  metadataBase: new URL('https://nextjs.1984.lv'),
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = await cookies();
+  const defaultOpen = cookieStore.get('sidebar:state')?.value === 'true';
+
   return (
     <html lang='en'>
       <body className={`${inter.className} antialiased`}>
@@ -27,21 +32,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className='h-screen flex flex-col'>
-            <Header />
+          <SidebarProvider defaultOpen={defaultOpen}>
+            <AppSidebar />
 
-            <main className='flex flex-1 bg-background'>{children}</main>
+            <main className='w-screen'>
+              <SidebarTrigger className='absolute m-2' />
 
-            <footer className='flex h-12 items-center justify-center'>
-              <a
-                href='https://freedns.afraid.org'
-                target='_blank'
-                className='text-primary hover:underline'
-              >
-                Free DNS
-              </a>
-            </footer>
-          </div>
+              {children}
+            </main>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>
