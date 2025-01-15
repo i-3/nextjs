@@ -19,7 +19,7 @@ export type vacSchema = {
   id: string;
   employer: string;
   vacancy: string;
-  state: 'pending' | 'denied';
+  state: 'pending' | 'reacted';
   date: string;
 };
 

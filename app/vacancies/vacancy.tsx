@@ -22,7 +22,7 @@ export type formSchema = {
   id: string;
   employer: string;
   vacancy: string;
-  state: 'pending' | 'denied';
+  state: 'pending' | 'reacted';
   date: string;
   new: boolean;
 };
@@ -51,7 +51,7 @@ export default function Vacancy(vacancy: vacSchema) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(query)} className='space-y-8 mx-auto'>
+      <form onSubmit={form.handleSubmit(query)} className='space-y-8'>
         <FormField
           control={form.control}
           name='employer'
@@ -92,8 +92,9 @@ export default function Vacancy(vacancy: vacSchema) {
           control={form.control}
           name='state'
           render={({ field }) => (
-            <FormItem>
+            <FormItem className='ml-8'>
               <FormLabel>State</FormLabel>
+
               <FormControl>
                 <RadioGroup
                   onValueChange={field.onChange}
@@ -104,8 +105,8 @@ export default function Vacancy(vacancy: vacSchema) {
                     <Label htmlFor='r0'>Pending</Label>
                   </div>
                   <div className='flex items-center space-x-2'>
-                    <RadioGroupItem value='denied' id='r1' />
-                    <Label htmlFor='r1'>Denied</Label>
+                    <RadioGroupItem value='reacted' id='r1' />
+                    <Label htmlFor='r1'>Reacted</Label>
                   </div>
                 </RadioGroup>
               </FormControl>
@@ -118,7 +119,9 @@ export default function Vacancy(vacancy: vacSchema) {
           )}
         />
 
-        <Button type='submit'>Submit</Button>
+        <Button type='submit' className='ml-8'>
+          Submit
+        </Button>
       </form>
     </Form>
   );
