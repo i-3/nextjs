@@ -18,6 +18,7 @@ import {
 import { ModeToggle } from './mode-toggle';
 import React from 'react';
 import Auth from '@/components/auth';
+import LocalTime from './local-time';
 
 const items = [
   {
@@ -42,13 +43,14 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader>
+      <SidebarHeader className='flex-row items-center'>
         <ModeToggle />
+        <LocalTime />
       </SidebarHeader>
 
       <SidebarSeparator />
 
-      <SidebarContent className='mt-24'>
+      <SidebarContent className=''>
         <SidebarGroup></SidebarGroup>
 
         <SidebarGroup>

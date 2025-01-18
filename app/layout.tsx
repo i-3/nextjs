@@ -8,10 +8,10 @@ import { cookies } from 'next/headers';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Demo Website',
-    default: 'Demo Website',
+    template: '%s | Iurii Website',
+    default: 'Iurii Website',
   },
-  description: 'My Next.js demo project.',
+  description: 'Iurii Korotkov Next.js demo project.',
   metadataBase: new URL('https://nextjs.1984.lv'),
 };
 
