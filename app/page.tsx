@@ -138,8 +138,8 @@ export default function Page() {
         </div>
 
         <button
-          className={`mt-8 text-white flex items-center justify-center
-            mx-auto w-32 h-32 font-semibold text-sm  rounded-full  ${
+          className={`mt-4 text-white flex items-center justify-center
+            mx-auto w-24 h-24 font-semibold text-sm  rounded-full  ${
               isActive ? ' bg-red-500' : 'hover:bg-red-900 bg-red-950'
             }`}
           onClick={handleOnRecord}
@@ -147,7 +147,7 @@ export default function Page() {
           {isActive ? <Mic /> : <MicOff />}
         </button>
 
-        <div className='flex flex-col mt-8'>
+        <div className='flex flex-col mt-4'>
           <div className=' border w-72 p-2 rounded-md self-end'>
             <p className=' text-primary'>What you said:</p>
             {text}
