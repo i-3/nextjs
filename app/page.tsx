@@ -101,12 +101,10 @@ export default function Page() {
         className=' border flex flex-col max-w-md
       mx-auto rounded-md p-4'
       >
-        <div className='border p-2 flex justify-between rounded-md text-sm'>
-          <span className='text-primary'>
-            Select the language you will speak
-          </span>
+        <div className='border p-4 rounded-md text-sm'>
+          Select the language you will speak
           <select
-            className=' bg-muted text-[.7rem] rounded-sm p-2'
+            className=' bg-muted mt-2 text-[.7rem] rounded-sm p-2 mr-32'
             name='language'
             value={language}
             onChange={(event) => setLanguage(event.target.value)}
@@ -117,12 +115,10 @@ export default function Page() {
           </select>
         </div>
 
-        <div className='mt-4 border p-2 rounded-md w-full text-sm'>
-          <span className='text-primary'>
-            Select the voice that will speak the translation
-          </span>
+        <div className='mt-4 border p-4 rounded-md text-sm'>
+          Select the voice that will speak the translation
           <select
-            className='bg-muted mt-2 w-full text-[.7rem] rounded-sm p-2 '
+            className='bg-muted mt-2 text-[.7rem] rounded-sm p-2 '
             name='voice'
             value={voice?.lang}
             onChange={(event) => {
