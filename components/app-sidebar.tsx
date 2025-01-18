@@ -22,7 +22,7 @@ import LocalTime from './local-time';
 
 const items = [
   {
-    title: 'Translator',
+    title: 'Translate',
     url: '/',
     icon: Languages,
   },
