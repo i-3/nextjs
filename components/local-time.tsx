@@ -5,11 +5,11 @@ import React, { useEffect, useState } from 'react';
 type Props = {};
 
 const LocalTime = (props: Props) => {
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState(new Date().toLocaleTimeString('lv-LV'));
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setTime(new Date().toLocaleTimeString('it-IT'));
+      setTime(new Date().toLocaleTimeString('lv-LV'));
     }, 1000);
   }, []);
 
