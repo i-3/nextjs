@@ -51,8 +51,6 @@ export function AppSidebar() {
       <SidebarSeparator />
 
       <SidebarContent className=''>
-        <SidebarGroup></SidebarGroup>
-
         <SidebarGroup>
           <SidebarGroupLabel></SidebarGroupLabel>
 
@@ -73,6 +71,8 @@ export function AppSidebar() {
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
+
+        <SidebarGroup></SidebarGroup>
       </SidebarContent>
 
       <SidebarSeparator />
