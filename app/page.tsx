@@ -2,6 +2,7 @@
 
 import { Mic, MicOff } from 'lucide-react';
 import { useState, useRef } from 'react';
+import { motion } from 'motion/react';
 
 export default function Page() {
   const recognitionRef = useRef<SpeechRecognition>(null);
@@ -97,6 +98,21 @@ export default function Page() {
 
   return (
     <main className='w-full pt-16'>
+      <motion.div
+        className=' absolute right-0 text-yellow-500 font-bold w-[80px]'
+        initial={{ opacity: 0, x: -100 }}
+        animate={{
+          opacity: 1,
+          x: 0,
+          transition: {
+            repeat: Infinity,
+            duration: 1,
+          },
+        }}
+      >
+        XXX
+      </motion.div>
+
       <div
         className=' border flex flex-col max-w-md
       mx-auto rounded-md p-4'
