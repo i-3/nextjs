@@ -2,7 +2,6 @@
 
 import { Mic, MicOff } from 'lucide-react';
 import { useState, useRef } from 'react';
-import { motion } from 'motion/react';
 
 export default function Page() {
   const recognitionRef = useRef<SpeechRecognition>(null);
@@ -102,23 +101,6 @@ export default function Page() {
         className=' border flex flex-col max-w-md
       mx-auto rounded-md p-4'
       >
-        <div>
-          XXX
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            animate={{
-              opacity: 1,
-              x: 0,
-              transition: {
-                repeat: Infinity,
-                duration: 1,
-              },
-            }}
-          >
-            <Mic />
-          </motion.div>
-        </div>
-
         <div className='border p-4 rounded-md text-sm'>
           Select the language you will speak
           <select
@@ -132,6 +114,7 @@ export default function Page() {
             })}
           </select>
         </div>
+
         <div className='mt-4 border p-4 rounded-md text-sm'>
           Select the voice that will speak the translation
           <select
@@ -153,6 +136,7 @@ export default function Page() {
             })}
           </select>
         </div>
+
         <button
           className={`mt-4 text-white flex items-center justify-center
             mx-auto w-24 h-24 font-semibold text-sm  rounded-full  ${
@@ -162,6 +146,7 @@ export default function Page() {
         >
           {isActive ? <Mic /> : <MicOff />}
         </button>
+
         <div className='flex flex-col mt-4'>
           <div className=' border w-72 p-2 rounded-md self-end'>
             <p className=' text-primary'>What you said:</p>
