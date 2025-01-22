@@ -101,7 +101,7 @@ export default function Page() {
       <div
         className=' border flex flex-col max-w-md
       mx-auto rounded-md p-4'
-      >
+      >XXX
         <motion.div
           initial={{ opacity: 0, x: -100 }}
           animate={{
