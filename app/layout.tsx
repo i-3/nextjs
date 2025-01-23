@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar';
 import { AppSidebar } from '@/components/app-sidebar';
 import { cookies } from 'next/headers';
+import Template from './ui/template';
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +39,7 @@ export default async function RootLayout({
             <main className='w-screen'>
               <SidebarTrigger className='absolute m-2' />
 
-              {children}
+              <Template>{children}</Template>
             </main>
           </SidebarProvider>
         </ThemeProvider>

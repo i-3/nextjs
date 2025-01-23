@@ -16,14 +16,15 @@ const LocalTime = (props: Props) => {
 
   return (
     <motion.div
-      className=' absolute right-0 text-yellow-500 font-bold w-[80px]'
-      initial={{ opacity: 0, x: -100 }}
+      className=' absolute right-2 text-yellow-500 font-bold w-[72px]'
+      initial={{ opacity: 1, x: 0 }}
       animate={{
+        rotateY: 360,
         opacity: 1,
         x: 0,
         transition: {
           repeat: Infinity,
-          duration: 1,
+          duration: 5,
         },
       }}
     >

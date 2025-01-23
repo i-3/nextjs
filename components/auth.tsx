@@ -8,15 +8,7 @@ export default async function Auth() {
 
   return (
     <div className=''>
-      {!session?.user ? (
-        <Link
-          href={'/login'}
-          className=' flex h-12 w-12 items-center justify-center hover:bg-muted
-          bg-background'
-        >
-          <LogIn size={18} />
-        </Link>
-      ) : (
+      {session?.user && (
         <form
           action={async () => {
             'use server';
