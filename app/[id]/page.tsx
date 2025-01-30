@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import Breadcrumbs from '@/app/ui/breadcrumbs';
-import { pool } from '../../../db';
+import { pool } from '../../db';
 import Vacancy from '../vacancy';
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
@@ -36,10 +36,10 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     <main className=' mt-48 max-w-md mx-auto px-4'>
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Vacancies', href: '/vacancies' },
+          { label: 'Vacancies', href: '/' },
           {
             label: 'Edit Vacancy',
-            href: `/vacancies/${params.id}`,
+            href: `/${params.id}`,
             active: true,
           },
         ]}

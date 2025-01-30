@@ -83,7 +83,7 @@ export const columns: ColumnDef<vacSchema>[] = [
     id: 'actions',
     header: () => {
       return (
-        <Button variant='default' onClick={() => redirect('/vacancies/-')}>
+        <Button variant='default' onClick={() => redirect('/-')}>
           <Plus />
         </Button>
       );
@@ -105,7 +105,7 @@ export const columns: ColumnDef<vacSchema>[] = [
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem onClick={() => redirect(`/vacancies/${r.id}`)}>
+            <DropdownMenuItem onClick={() => redirect(`/${r.id}`)}>
               Update
             </DropdownMenuItem>
 

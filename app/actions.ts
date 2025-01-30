@@ -4,7 +4,7 @@ import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { pool } from '../../db';
+import { pool } from '../db';
 import { formSchema } from './vacancy';
 
 export async function query(values: formSchema) {
@@ -38,13 +38,13 @@ export async function query(values: formSchema) {
   }
 
   // revalidatePath(`/videos/${videoid}`);
-  redirect(`/vacancies`);
+  redirect(`/`);
 }
 
 export async function deleteVacancy(id: string) {
   try {
     await pool.query(`DELETE FROM vacancies WHERE id = '${id}'`);
-    revalidatePath('/vacancies');
+    revalidatePath('/');
     // return { message: 'Deleted Trainer.' };
   } catch (error) {
     return {

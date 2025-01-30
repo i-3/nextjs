@@ -22,14 +22,14 @@ import LocalTime from './local-time';
 
 const items = [
   {
-    title: 'Translate',
+    title: 'Vacancies',
     url: '/',
-    icon: Languages,
+    icon: Table2,
   },
   {
-    title: 'Vacancies',
-    url: '/vacancies',
-    icon: Table2,
+    title: 'Translate',
+    url: '/translate',
+    icon: Languages,
   },
   {
     title: 'Groq Chat',
@@ -52,7 +52,7 @@ export function AppSidebar() {
 
       <SidebarContent className=''>
         <SidebarGroup>
-          <SidebarGroupLabel></SidebarGroupLabel>
+          {/* <SidebarGroupLabel></SidebarGroupLabel> */}
 
           <SidebarGroupContent>
             <SidebarMenu>

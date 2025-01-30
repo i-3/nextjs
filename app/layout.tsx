@@ -10,9 +10,9 @@ import Template from './ui/template';
 export const metadata: Metadata = {
   title: {
     template: '%s | Iurii Website',
-    default: 'Iurii Website',
+    default: 'Next.js + TS',
   },
-  description: 'Iurii Korotkov Next.js demo project.',
+  description: 'Next.js demo project.',
   metadataBase: new URL('https://nextjs.1984.lv'),
 };
 
@@ -37,7 +37,7 @@ export default async function RootLayout({
             <AppSidebar />
 
             <main className='w-screen'>
-              <SidebarTrigger className='absolute m-2' />
+              <SidebarTrigger className='m-4' />
 
               <Template>{children}</Template>
             </main>

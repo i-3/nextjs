@@ -68,7 +68,7 @@ export function DataTable<TData, TValue>({
   });
 
   return (
-    <div>
+    <div className=''>
       <div className='flex items-center py-4'>
         <Input
           placeholder='Filter employers...'
@@ -137,7 +137,7 @@ export function DataTable<TData, TValue>({
                   data-state={row.getIsSelected() && 'selected'}
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
+                    <TableCell key={cell.id} className='py-3'>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
