@@ -22,8 +22,8 @@ import LocalTime from './local-time';
 
 const items = [
   {
-    title: 'Vacancies',
-    url: '/',
+    title: 'Applications',
+    url: '/applications',
     icon: Table2,
   },
   {

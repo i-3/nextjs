@@ -13,9 +13,9 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Checkbox } from '@/components/ui/checkbox';
 import { redirect } from 'next/navigation';
-import { deleteVacancy } from './actions';
+import { deleteApplication } from './actions';
 
-export type vacSchema = {
+export type appSchema = {
   id: string;
   employer: string;
   vacancy: string;
@@ -23,7 +23,7 @@ export type vacSchema = {
   date: string;
 };
 
-export const columns: ColumnDef<vacSchema>[] = [
+export const columns: ColumnDef<appSchema>[] = [
   {
     id: 'select',
     header: ({ table }) => (
@@ -83,7 +83,7 @@ export const columns: ColumnDef<vacSchema>[] = [
     id: 'actions',
     header: () => {
       return (
-        <Button variant='default' onClick={() => redirect('/-')}>
+        <Button variant='default' onClick={() => redirect('/applications/-')}>
           <Plus />
         </Button>
       );
@@ -105,11 +105,11 @@ export const columns: ColumnDef<vacSchema>[] = [
 
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem onClick={() => redirect(`/${r.id}`)}>
+            <DropdownMenuItem onClick={() => redirect(`/applications/${r.id}`)}>
               Update
             </DropdownMenuItem>
 
-            <DropdownMenuItem onClick={() => deleteVacancy(r.id)}>
+            <DropdownMenuItem onClick={() => deleteApplication(r.id)}>
               Delete
             </DropdownMenuItem>
           </DropdownMenuContent>

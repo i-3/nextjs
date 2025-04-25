@@ -16,7 +16,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { query } from './actions';
-import { vacSchema } from './columns';
+import { appSchema } from './columns';
 
 export type formSchema = {
   id: string;
@@ -27,13 +27,13 @@ export type formSchema = {
   new: boolean;
 };
 
-export default function Vacancy(vacancy: vacSchema) {
-  // console.log(vacancy);
+export default function Application(application: appSchema) {
+  // console.log(application);
   const now = new Date().toISOString().split('T')[0];
 
   const form = useForm<formSchema>({
     defaultValues:
-      vacancy.id == '-'
+      application.id == '-'
         ? {
             id: '',
             employer: '',
@@ -42,7 +42,7 @@ export default function Vacancy(vacancy: vacSchema) {
             date: now,
             new: true,
           }
-        : { ...vacancy, date: now, new: false },
+        : { ...application, date: now, new: false },
   });
 
   function onSubmit(values: formSchema) {

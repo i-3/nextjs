@@ -41,7 +41,7 @@ export async function GET() {
 //   date DATE NOT NULL
 // );
 
-// CREATE TABLE IF NOT EXISTS vacancies (
+// CREATE TABLE IF NOT EXISTS applications (
 //   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
 //   employer VARCHAR(255) NOT NULL,
 //   vacancy VARCHAR(255) NOT NULL,

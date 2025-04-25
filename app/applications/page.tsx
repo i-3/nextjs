@@ -1,15 +1,15 @@
-import { vacSchema, columns } from './columns';
+import { appSchema, columns } from './columns';
 import { DataTable } from './data-table';
-import { pool } from '../db';
+import { pool } from '../../db';
 
-async function getData(): Promise<vacSchema[]> {
+async function getData(): Promise<appSchema[]> {
   try {
-    const data = await pool.query(`SELECT * FROM vacancies`);
+    const data = await pool.query(`SELECT * FROM applications`);
 
     return data.rows;
   } catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch vacancies.');
+    throw new Error('Failed to fetch applications.');
   }
 }
 
