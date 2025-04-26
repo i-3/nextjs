@@ -1,6 +1,6 @@
 'use client';
 
-import { SERVICES_DATA } from '@/app/(home)/assets/data';
+import { SERVICES_DATA } from './assets/data';
 import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
