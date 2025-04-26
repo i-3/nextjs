@@ -19,9 +19,9 @@ const Hero = () => {
            top-1/2 left-1/2'
         />
       </div>
-      <h3 className=' flex items-end gap-2 text-xl md:text-2xl mb-3'>
+      <h1 className=' flex items-end gap-2 text-xl md:text-2xl mb-3'>
         Hello I'm Iurii Korotkov
-      </h3>
+      </h1>
       <div className=' text-xl sm:text-6xl lg:text-[66px] font-bold'>
         <TypeAnimation
           sequence={[
