@@ -2,19 +2,19 @@ import web from './web.png';
 import mob from './mob.png';
 import ui from './ui.png';
 
-// export const navLinks = [
-//   { href: '#top', label: 'Home' },
-//   { href: '#about', label: 'About' },
-//   { href: '#services', label: 'Services' },
-//   { href: '#projects', label: 'Projects' },
-//   { href: '#contact', label: 'Contact' },
-// ];
 export const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/applications', label: 'Applications' },
-  { href: '/translate', label: 'Translate' },
-  { href: '/chat', label: 'Chat' },
+  { href: '#top', label: 'Home' },
+  { href: '#about', label: 'About' },
+  { href: '#services', label: 'Services' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
 ];
+// export const navLinks = [
+//   { href: '/', label: 'Home' },
+//   { href: '/applications', label: 'Applications' },
+//   { href: '/translate', label: 'Translate' },
+//   { href: '/chat', label: 'Chat' },
+// ];
 
 export const TAB_DATA = [
   {
