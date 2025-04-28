@@ -21,7 +21,7 @@ const Contact = () => {
             impactful and inspiring!
           </p>
           <div className='flex gap-4'>
-            <Link href='https://github.com'>
+            <Link href='https://github.com/i-3' target='_blank'>
               <Image
                 src={github}
                 alt='github icon'
@@ -30,7 +30,10 @@ const Contact = () => {
                 className='hover:scale-110 transition-transform duration-300 cursor-pointer'
               />
             </Link>
-            <Link href='https://linkedin.com'>
+            <Link
+              href='https://www.linkedin.com/in/iurii-korotkov-aa661b359/'
+              target='_blank'
+            >
               <Image
                 src={linkedin}
                 alt='linkedin icon'
@@ -54,7 +57,7 @@ const Contact = () => {
               <input
                 id='email'
                 type='email'
-                required
+                // required
                 placeholder='YourEmail@Email.com'
                 autoComplete='off'
                 className='w-full p-3 rounded-lg bg-[#1f1f1f] border border-[#33353f]
@@ -62,6 +65,7 @@ const Contact = () => {
                 focus:outline-none transition-all duration-300'
               />
             </div>
+
             <div>
               <label
                 htmlFor='subject'
@@ -72,7 +76,7 @@ const Contact = () => {
               <input
                 id='subject'
                 type='text'
-                required
+                // required
                 placeholder='Subject'
                 autoComplete='off'
                 className='w-full p-3 rounded-lg bg-[#1f1f1f] border border-[#33353f]
@@ -80,6 +84,7 @@ const Contact = () => {
                 focus:outline-none transition-all duration-300'
               />
             </div>
+
             <div>
               <label
                 htmlFor='message'
@@ -89,13 +94,14 @@ const Contact = () => {
               </label>
               <textarea
                 id='message'
-                required
-                placeholder="let's talk about..."
+                // required
+                placeholder="Let's talk about..."
                 className='w-full p-3 rounded-lg bg-[#1f1f1f] border border-[#33353f]
                 h-32 resize-none text-white placeholder-[#9ca2a9] focus:ring-2 focus:ring-[#00adb5]
                 focus:outline-none transition-all duration-300'
               />
             </div>
+
             <button
               type='submit'
               className='w-full bg-[#00adb5] hover:bg-[#008188] text-white font-medium py-3

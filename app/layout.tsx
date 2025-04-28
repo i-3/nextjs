@@ -11,7 +11,7 @@ import Template from './ui/template';
 export const metadata: Metadata = {
   title: {
     template: '%s | Iurii Website',
-    default: 'Demo Website of Iurii Korotkov',
+    default: "Iurii Korotkov's website",
   },
   description:
     'Next.js project deployed on Oracle Cloud Infrastructure with Ubuntu LTS instance, Nginx web server and Certbot certificate.',
@@ -34,7 +34,7 @@ export default async function RootLayout({
 
   return (
     <html lang='en'>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased overflow-x-hidden`}>
         <ThemeProvider
           attribute='class'
           defaultTheme='system'

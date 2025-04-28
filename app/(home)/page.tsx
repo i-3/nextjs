@@ -11,9 +11,9 @@ export default function Home() {
     <main className='flex flex-col min-h-screen'>
       <Navbar />
       <Hero />
-      <About />
-      <Services />
-      <Projects />
+      {/* <About /> */}
+      {/* <Services /> */}
+      {/* <Projects /> */}
       <Contact />
       <Footer />
     </main>

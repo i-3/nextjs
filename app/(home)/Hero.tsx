@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import profile from './assets/hero.png';
+import profile from './assets/hero.jpg';
 import { TypeAnimation } from 'react-type-animation';
 
 const Hero = () => {
@@ -24,37 +24,32 @@ const Hero = () => {
       </h1>
       <div className=' text-xl sm:text-6xl lg:text-[66px] font-bold'>
         <TypeAnimation
-          sequence={[
-            'Frontend Developer',
-            1000,
-            'Mobile Developer',
-            1000,
-            'UI/UX Designer',
-            1000,
-          ]}
+          sequence={['Mobile Developer', 1000, 'Web Developer', 1000]}
           wrapper='span'
           speed={50}
           repeat={Infinity}
         />
       </div>
       <p className=' text-gray-400 max-w-2xl mx-auto'>
-        Frontend & Mobile Developer with 2 years of experience in React,
-        Next.js, React Native, Flutter, and UI/UX design, building responsive
-        and user-friendly applications.
+        Mobile Developer with 2 years of experience in React Native and skills
+        in Flutter. Web Developer with skills in Next.js, MERN stack, Django and
+        Ruby on Rails.
       </p>
       <div className=' flex flex-col sm:flex-row items-center gap-4 mt-4'>
         <a
-          href=''
+          href='https://www.linkedin.com/in/iurii-korotkov-aa661b359/overlay/contact-info/'
+          target='_blank'
           className=' px-10 py-3 rounded-full border border-white
         bg-[#1f1f1f] text-white flex items-center gap-2'
         >
           Contact Me
         </a>
         <a
-          href=''
+          href='/CV_Iurii_Korotkov_en.pdf'
+          download
           className=' px-10 py-3 rounded-full border border-gray-500 flex items-center gap-2'
         >
-          My Resume
+          Download CV
         </a>
       </div>
     </div>
