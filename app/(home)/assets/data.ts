@@ -11,7 +11,7 @@ import ui from './ui.png';
 // ];
 export const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/applications', label: 'Applications' },
+  // { href: '/applications', label: 'Applications' },
   // { href: '/translate', label: 'Translate' },
   // { href: '/chat', label: 'Chat' },
 ];
