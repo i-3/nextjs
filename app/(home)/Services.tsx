@@ -1,9 +1,37 @@
 'use client';
 
-import { SERVICES_DATA } from './assets/data';
+// import { SERVICES_DATA } from './assets/data';
 import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
+
+import web from './web.png';
+import mob from './mob.png';
+import ui from './ui.png';
+
+const SERVICES_DATA = [
+  {
+    id: 1,
+    title: 'Web Development',
+    description:
+      'Building responsive and modern websites with clean and efficient code.',
+    icon: web,
+  },
+  {
+    id: 2,
+    title: 'Mobile Development',
+    description:
+      'Creating seamless mobile applications with React Native and Flutter.',
+    icon: mob,
+  },
+  {
+    id: 3,
+    title: 'UI/UX Design',
+    description:
+      'Designing intuitive user experiences with a focus on usability and aesthetics.',
+    icon: ui,
+  },
+];
 
 const Services = () => {
   return (

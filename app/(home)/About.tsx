@@ -3,8 +3,39 @@
 import React, { useState, useTransition } from 'react';
 import Image from 'next/image';
 import aboutImage from './assets/about.jpg';
-import { TAB_DATA } from './assets/data';
+// import { TAB_DATA } from './assets/data';
 import { motion } from 'framer-motion';
+
+const TAB_DATA = [
+  {
+    title: 'Skills',
+    id: 'skills',
+    content: [
+      'React.js',
+      'Next.js',
+      'React Native',
+      'Flutter',
+      'TypeScript',
+      'UI/UX Design',
+    ],
+  },
+  {
+    title: 'Education',
+    id: 'education',
+    content: [
+      "Bachelor's Degree in Computer Science",
+      'Fullstack Development Bootcamp',
+    ],
+  },
+  {
+    title: 'Certifications',
+    id: 'certifications',
+    content: [
+      'Meta Front-End Developer Certification',
+      'Microsoft Certified: Azure Fundamentals',
+    ],
+  },
+];
 
 const variants = {
   default: { width: 0 },

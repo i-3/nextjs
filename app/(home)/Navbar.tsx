@@ -1,8 +1,22 @@
 'use client';
 
-import { navLinks } from './assets/data';
+// import { navLinks } from './assets/data';
 import React, { useState } from 'react';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
+
+// const navLinks = [
+//   { href: '#top', label: 'Home' },
+//   { href: '#about', label: 'About' },
+//   { href: '#services', label: 'Services' },
+//   { href: '#projects', label: 'Projects' },
+//   { href: '#contact', label: 'Contact' },
+// ];
+const navLinks = [
+  { href: '/', label: 'Home' },
+  { href: '/applications', label: 'Applications' },
+  // { href: '/translate', label: 'Translate' },
+  // { href: '/chat', label: 'Chat' },
+];
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);

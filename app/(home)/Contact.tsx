@@ -1,10 +1,38 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+import React, { useState } from 'react';
 import linkedin from './assets/linkedinIcon.png';
 import github from './assets/githubIcon.png';
 
 const Contact = () => {
+  const [email, setEmail] = useState('');
+  const [subject, setSubject] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('/api', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, subject, message }),
+      });
+      const data = await response.json();
+      alert(data.message);
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred, please try again later');
+    }
+    setEmail('');
+    setSubject('');
+    setMessage('');
+  };
+
   return (
     <section
       id='contact'
@@ -46,7 +74,7 @@ const Contact = () => {
         </div>
 
         <div className='bg-[#1a1a1a] p-8 rounded-xl shadow-lg'>
-          <form className='flex flex-col space-y-6'>
+          <form className='flex flex-col space-y-6' onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor='email'
@@ -57,15 +85,14 @@ const Contact = () => {
               <input
                 id='email'
                 type='email'
-                // required
-                placeholder='YourEmail@Email.com'
-                autoComplete='off'
+                required
                 className='w-full p-3 rounded-lg bg-[#1f1f1f] border border-[#33353f]
                 text-white placeholder-[#9ca2a9] focus:ring-2 focus:ring-[#00adb5]
                 focus:outline-none transition-all duration-300'
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
-
             <div>
               <label
                 htmlFor='subject'
@@ -76,15 +103,14 @@ const Contact = () => {
               <input
                 id='subject'
                 type='text'
-                // required
-                placeholder='Subject'
-                autoComplete='off'
+                required
                 className='w-full p-3 rounded-lg bg-[#1f1f1f] border border-[#33353f]
                 text-white placeholder-[#9ca2a9] focus:ring-2 focus:ring-[#00adb5]
                 focus:outline-none transition-all duration-300'
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
               />
             </div>
-
             <div>
               <label
                 htmlFor='message'
@@ -94,14 +120,14 @@ const Contact = () => {
               </label>
               <textarea
                 id='message'
-                // required
-                placeholder="Let's talk about..."
+                required
                 className='w-full p-3 rounded-lg bg-[#1f1f1f] border border-[#33353f]
                 h-32 resize-none text-white placeholder-[#9ca2a9] focus:ring-2 focus:ring-[#00adb5]
                 focus:outline-none transition-all duration-300'
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
               />
             </div>
-
             <button
               type='submit'
               className='w-full bg-[#00adb5] hover:bg-[#008188] text-white font-medium py-3
