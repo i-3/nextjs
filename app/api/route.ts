@@ -16,10 +16,16 @@ export async function POST(req: NextRequest) {
     });
 
     if (error) {
-      return Response.json({ error }, { status: 501 });
+      return Response.json({ error }, { status: 500 });
     }
 
-    return Response.json(data);
+    // console.log(data);
+    //data = { id: 'd88acf57-172d-44a4-b987-65f9e879c1de' }
+
+    return Response.json(
+      { message: 'Email sent successfully', data },
+      { status: 200 }
+    );
   } catch (error) {
     return Response.json({ error }, { status: 500 });
   }
