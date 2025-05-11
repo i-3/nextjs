@@ -1,6 +1,6 @@
 // 'use client';
 
-import { Languages, MessagesSquare, Table2 } from 'lucide-react';
+import { Home, Languages, MessagesSquare, Table2 } from 'lucide-react';
 // import { usePathname } from 'next/navigation';
 import {
   Sidebar,
@@ -18,21 +18,26 @@ import {
 import { ModeToggle } from './mode-toggle';
 import React from 'react';
 import Auth from '@/components/auth';
-import LocalTime from './local-time';
+import Clock from './clock';
 
 const items = [
+  {
+    title: 'Home',
+    url: '/',
+    icon: Home,
+  },
   {
     title: 'Applications',
     url: '/applications',
     icon: Table2,
   },
   {
-    title: 'Translate',
+    title: 'AI translator',
     url: '/translate',
     icon: Languages,
   },
   {
-    title: 'Groq Chat',
+    title: 'Chat with AI',
     url: '/chat',
     icon: MessagesSquare,
   },
@@ -43,9 +48,8 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader className='flex-row items-center'>
+      <SidebarHeader className='items-end'>
         <ModeToggle />
-        <LocalTime />
       </SidebarHeader>
 
       <SidebarSeparator />
@@ -69,6 +73,8 @@ export function AppSidebar() {
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
+
+            <Clock />
           </SidebarGroupContent>
         </SidebarGroup>
 
@@ -77,16 +83,16 @@ export function AppSidebar() {
 
       <SidebarSeparator />
 
-      <SidebarFooter className='flex-row justify-between items-center'>
+      <SidebarFooter className='flex-row justify-end items-center'>
         <a
           href='https://freedns.afraid.org'
           target='_blank'
-          className='text-primary hover:underline text-sm'
+          className='text-primary hover:underline text-sm py-4'
         >
           Free DNS
         </a>
 
-        <Auth />
+        {/* <Auth /> */}
       </SidebarFooter>
     </Sidebar>
   );

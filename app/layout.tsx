@@ -10,8 +10,8 @@ import Template from './ui/template';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Iurii Website',
-    default: "Iurii Korotkov's website",
+    template: '%s | Iurii Korotkov',
+    default: 'Iurii Korotkov',
   },
   description:
     'Next.js project deployed on Oracle Cloud Infrastructure with Ubuntu LTS instance, Nginx web server and Certbot certificate.',
@@ -41,16 +41,16 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/* <SidebarProvider defaultOpen={defaultOpen}> */}
-          {/* <AppSidebar /> */}
-          {/* <Header /> */}
+          <SidebarProvider defaultOpen={defaultOpen}>
+            <AppSidebar />
+            {/* <Header /> */}
 
-          <main className='w-screen'>
-            {/* <SidebarTrigger className='m-4' /> */}
+            <main className='w-screen'>
+              <SidebarTrigger className='m-4' />
 
-            <Template>{children}</Template>
-          </main>
-          {/* </SidebarProvider> */}
+              <Template>{children}</Template>
+            </main>
+          </SidebarProvider>
         </ThemeProvider>
       </body>
     </html>

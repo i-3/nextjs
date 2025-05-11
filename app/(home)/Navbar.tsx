@@ -4,28 +4,25 @@
 import React, { useState } from 'react';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
 
-// const navLinks = [
-//   { href: '#top', label: 'Home' },
-//   { href: '#about', label: 'About' },
-//   { href: '#services', label: 'Services' },
-//   { href: '#projects', label: 'Projects' },
-//   { href: '#contact', label: 'Contact' },
-// ];
 const navLinks = [
-  { href: '/', label: 'Home' },
-  { href: '/applications', label: 'Applications' },
-  // { href: '/translate', label: 'Translate' },
-  // { href: '/chat', label: 'Chat' },
+  { href: '#top', label: 'Home' },
+  // { href: '#about', label: 'About' },
+  // { href: '#services', label: 'Services' },
+  // { href: '#projects', label: 'Projects' },
+  { href: '#contact', label: 'Contact' },
 ];
+// const navLinks = [
+// { href: '/', label: 'Home' },
+// { href: '/applications', label: 'Applications' },
+// { href: '/translate', label: 'Translate' },
+// { href: '/chat', label: 'Chat' },
+// ];
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav
-      className=' w-full fixed top-0 left-0 px-5 lg:px-8 xl:px-[8%] py-4
-    flex items-center justify-center z-50'
-    >
+    <nav className='sticky top-0 lg:px-8 xl:px-[8%] py-4 flex justify-center z-50'>
       <ul
         className=' hidden md:flex items-center gap-6 lg:gap-8 rounded-full
       px-12 py-3 bg-[#1f1f1f] shadow-sm'
