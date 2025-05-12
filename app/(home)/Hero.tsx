@@ -8,15 +8,15 @@ import { TypeAnimation } from 'react-type-animation';
 const Hero = () => {
   return (
     <div
-      className=' w-11/12 max-w-3xl text-center mx-auto mt-32 flex flex-col
-     items-center justify-center gap-4'
+      className=' w-11/12 max-w-3xl text-center mx-auto mt-16
+      flex flex-col items-center justify-center gap-4'
     >
       <div className=' rounded-full bg-[#1f1f1f] w-[200px] h-[200px] relative'>
         <Image
           src={profile}
           alt='profile image'
-          className=' rounded-full w-48 absolute transform -translate-x-1/2 -translate-y-1/2
-           top-1/2 left-1/2'
+          className=' rounded-full w-48 absolute transform
+          -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2'
         />
       </div>
       <h1 className=' flex items-end gap-2 text-xl md:text-2xl mb-3'>
@@ -35,6 +35,7 @@ const Hero = () => {
         in Flutter. Web Developer with skills in Next.js, MERN stack, Django and
         Ruby on Rails.
       </p>
+
       <div className=' flex flex-col sm:flex-row items-center gap-4 mt-4'>
         <a
           href='https://www.linkedin.com/in/iurii-korotkov-aa661b359/overlay/contact-info/'
