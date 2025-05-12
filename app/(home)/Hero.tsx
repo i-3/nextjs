@@ -8,7 +8,7 @@ import { TypeAnimation } from 'react-type-animation';
 const Hero = () => {
   return (
     <div
-      className=' w-11/12 max-w-3xl text-center mx-auto mt-16
+      className=' w-11/12 max-w-3xl text-center mx-auto mt-4
       flex flex-col items-center justify-center gap-4'
     >
       <div className=' rounded-full bg-[#1f1f1f] w-[200px] h-[200px] relative'>
