@@ -17,7 +17,14 @@ export const metadata: Metadata = {
     'Next.js project deployed on Oracle Cloud Infrastructure with Ubuntu LTS instance, Nginx web server and Certbot certificate.',
   metadataBase: new URL('https://www.iurii.lv/'),
 
-  keywords: ['Iurii Korotkov', 'mobile developer', 'web developer'],
+  keywords: [
+    'Iurii',
+    'Korotkov',
+    'Latvia',
+    'Riga',
+    'mobile developer',
+    'web developer',
+  ],
   authors: [{ name: 'Iurii Korotkov' }],
   publisher: 'Iurii Korotkov',
   alternates: { canonical: '/' },
