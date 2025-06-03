@@ -13,6 +13,7 @@ const Hero = () => {
     >
       <div className=' rounded-full bg-[#1f1f1f] w-[200px] h-[200px] relative'>
         <Image
+          priority
           src={profile}
           alt='profile image'
           className=' rounded-full w-48 absolute transform
