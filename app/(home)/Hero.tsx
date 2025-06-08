@@ -37,7 +37,7 @@ const Hero = () => {
         Ruby on Rails.
       </p>
 
-      <div className=' flex flex-col sm:flex-row items-center gap-4 mt-4'>
+      <div className=' flex flex-col sm:flex-row items-center gap-4 mt-20'>
         <a
           href='https://www.linkedin.com/in/iurii-korotkov-aa661b359/overlay/contact-info/'
           target='_blank'
