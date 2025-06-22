@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: 'Iurii Korotkov' }],
   publisher: 'Iurii Korotkov',
-  alternates: { canonical: '/' },
+  // alternates: { canonical: '/' },
   robots: 'all',
 };
 
