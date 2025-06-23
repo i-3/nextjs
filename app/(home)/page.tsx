@@ -6,10 +6,10 @@ import Projects from './Projects';
 import Contact from './Contact';
 import Footer from './Footer';
 
-import { NextRequest } from 'next/server';
+// import { NextRequest } from 'next/server';
 import { headers } from 'next/headers';
 
-export default async function Home(request: NextRequest) {
+export default async function Home() {
   const headersList = await headers();
   // const xRealIp = request.headers.get('x-real-ip');
   // const xForwardedFor = request.headers.get('x-forwarded-for');
