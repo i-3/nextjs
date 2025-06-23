@@ -14,7 +14,9 @@ export default async function Home() {
 
   return (
     <main className='flex flex-col min-h-screen'>
-      <p className=' text-center text-blue-500'>Your IP address: {ip}</p>
+      <p className=' text-center text-blue-500 text-xs'>
+        Your IPv4 address: {ip}
+      </p>
 
       <Navbar />
       <Hero />
