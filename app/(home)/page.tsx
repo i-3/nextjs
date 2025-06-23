@@ -6,17 +6,9 @@ import Projects from './Projects';
 import Contact from './Contact';
 import Footer from './Footer';
 
-import { headers } from 'next/headers';
-
-export default async function Home() {
-  const headersList = await headers();
-  const userAgent = headersList.get('user-agent');
-  const host = headersList.get('host');
-
+export default function Home() {
   return (
     <main className='flex flex-col min-h-screen'>
-      <p>{headersList}</p>
-
       <Navbar />
       <Hero />
       {/* <About /> */}
