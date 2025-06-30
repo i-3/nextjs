@@ -4,8 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import profile from './assets/hero.jpg';
 import { TypeAnimation } from 'react-type-animation';
+import { useTranslations } from 'next-intl';
 
 const Hero = () => {
+  const t = useTranslations('T');
+
   return (
     <div
       className=' w-11/12 max-w-3xl text-center mx-auto mt-4
@@ -21,7 +24,7 @@ const Hero = () => {
         />
       </div>
       <h1 className=' flex items-end gap-2 text-xl md:text-2xl mb-3'>
-        Hello I'm Iurii Korotkov
+        {t('hi')}
       </h1>
       <div className=' text-xl sm:text-6xl lg:text-[66px] font-bold'>
         <TypeAnimation

@@ -1,7 +1,4 @@
-// 'use client';
-
 import { Home, Languages, MessagesSquare, Table2 } from 'lucide-react';
-// import { usePathname } from 'next/navigation';
 import {
   Sidebar,
   SidebarContent,
