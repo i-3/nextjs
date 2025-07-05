@@ -17,7 +17,7 @@ type Props = {
 export async function generateMetadata({ params }: Props) {
   const { locale } = await params;
   const messages = await getMessages({ locale });
-  const title = messages.T.home;
+  const title = messages.T.title;
 
   return { title };
 }

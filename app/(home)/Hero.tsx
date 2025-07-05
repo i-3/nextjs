@@ -28,17 +28,13 @@ const Hero = () => {
       </h1>
       <div className=' text-xl sm:text-6xl lg:text-[66px] font-bold'>
         <TypeAnimation
-          sequence={['Mobile Developer', 1000, 'Web Developer', 1000]}
+          sequence={[t('mobile'), 1000, t('web'), 1000]}
           wrapper='span'
           speed={50}
           repeat={Infinity}
         />
       </div>
-      <p className=' text-gray-400 max-w-2xl mx-auto'>
-        Mobile Developer with 2 years of experience in React Native and skills
-        in Flutter. Web Developer with skills in Next.js, MERN stack, Django and
-        Ruby on Rails.
-      </p>
+      <p className=' text-gray-400 max-w-2xl mx-auto'>{t('about')}</p>
 
       <div className=' flex flex-col sm:flex-row items-center gap-4 mt-20'>
         <a
@@ -47,14 +43,14 @@ const Hero = () => {
           className=' px-10 py-3 rounded-full border border-white
         bg-[#1f1f1f] text-white flex items-center gap-2'
         >
-          Contact Me
+          {t('info')}
         </a>
         <a
           href='/CV_Iurii_Korotkov_en.pdf'
           download
           className=' px-10 py-3 rounded-full border border-gray-500 flex items-center gap-2'
         >
-          Download CV
+          {t('download')}
         </a>
       </div>
     </div>

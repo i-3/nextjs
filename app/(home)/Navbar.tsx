@@ -3,14 +3,8 @@
 // import { navLinks } from './assets/data';
 import React, { useState } from 'react';
 import { XMarkIcon, Bars3Icon } from '@heroicons/react/24/solid';
+import { useTranslations } from 'next-intl';
 
-const navLinks = [
-  { href: '#top', label: 'Home' },
-  // { href: '#about', label: 'About' },
-  // { href: '#services', label: 'Services' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#contact', label: 'Contact' },
-];
 // const navLinks = [
 // { href: '/', label: 'Home' },
 // { href: '/applications', label: 'Applications' },
@@ -20,6 +14,14 @@ const navLinks = [
 
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
+  const t = useTranslations('T');
+  const navLinks = [
+    { href: '#top', label: t('home') },
+    // { href: '#about', label: 'About' },
+    // { href: '#services', label: 'Services' },
+    { href: '#projects', label: t('projects') },
+    { href: '#contact', label: t('contacts') },
+  ];
 
   return (
     <nav className='sticky top-0 lg:px-8 xl:px-[8%] py-4 flex justify-center z-50'>
