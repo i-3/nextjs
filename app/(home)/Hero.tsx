@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import profile from './assets/hero.jpg';
-import { TypeAnimation } from 'react-type-animation';
 import { useTranslations } from 'next-intl';
 
 const Hero = () => {
@@ -27,12 +26,7 @@ const Hero = () => {
         {t('hi')}
       </h1>
       <div className=' text-xl sm:text-6xl lg:text-[66px] font-bold'>
-        <TypeAnimation
-          sequence={[t('mobile'), 1000, t('web'), 1000]}
-          wrapper='span'
-          speed={50}
-          repeat={Infinity}
-        />
+        {t('dev')}
       </div>
       <p className=' text-gray-400 max-w-2xl mx-auto'>{t('about')}</p>
 
