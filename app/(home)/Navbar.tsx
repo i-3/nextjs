@@ -27,7 +27,7 @@ const Navbar = () => {
     <nav className='sticky top-0 lg:px-8 xl:px-[8%] py-4 flex justify-center z-50'>
       <ul
         className=' hidden md:flex items-center gap-6 lg:gap-8 rounded-full
-      px-12 py-3 bg-background shadow-sm'
+      px-12 py-3 bg-background shadow-xs'
       >
         {navLinks.map(({ href, label }) => (
           <li key={href}>

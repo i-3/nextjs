@@ -88,7 +88,7 @@ const Contact = () => {
                 required
                 className='w-full p-3 rounded-lg bg-[#1f1f1f] border border-[#33353f]
                 text-white placeholder-[#9ca2a9] focus:ring-2 focus:ring-[#00adb5]
-                focus:outline-none transition-all duration-300'
+                focus:outline-hidden transition-all duration-300'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -106,7 +106,7 @@ const Contact = () => {
                 required
                 className='w-full p-3 rounded-lg bg-[#1f1f1f] border border-[#33353f]
                 text-white placeholder-[#9ca2a9] focus:ring-2 focus:ring-[#00adb5]
-                focus:outline-none transition-all duration-300'
+                focus:outline-hidden transition-all duration-300'
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
               />
@@ -123,7 +123,7 @@ const Contact = () => {
                 required
                 className='w-full p-3 rounded-lg bg-[#1f1f1f] border border-[#33353f]
                 h-32 resize-none text-white placeholder-[#9ca2a9] focus:ring-2 focus:ring-[#00adb5]
-                focus:outline-none transition-all duration-300'
+                focus:outline-hidden transition-all duration-300'
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
               />
