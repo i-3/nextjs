@@ -14,7 +14,6 @@ import {
 } from '@/components/ui/sidebar';
 import { ModeToggle } from './mode-toggle';
 import React from 'react';
-import Auth from '@/components/auth';
 import Clock from './clock';
 
 const items = [
