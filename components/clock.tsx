@@ -19,7 +19,9 @@ export default function Clock() {
       if (minuteHandle.current)
         minuteHandle.current.style.transform = `rotateZ(${mm * 6}deg)`;
       if (hourHandle.current)
-        hourHandle.current.style.transform = `rotateZ(${hh * 30 + mm * 0.5}deg)`;
+        hourHandle.current.style.transform = `rotateZ(${
+          hh * 30 + mm * 0.5
+        }deg)`;
     }, 1000);
   }, []);
 
