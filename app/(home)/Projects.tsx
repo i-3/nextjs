@@ -89,28 +89,28 @@ const PROJECTS_DATA = [
       'The project was taken from the official Django tutorial. The main goal was to remember Docker. This was inspired by the fact that the Ruby On Rails project is now generated with a Dockerfile file.',
     image: '/3.jpg',
     // gitUrl: '/',
-    previewUrl: 'https://django.hotunix.com/polls/',
+    previewUrl: 'https://django.setter.lv/polls/',
   },
   {
     id: 4,
     description: '',
     image: '/4.jpg',
     // gitUrl: '/',
-    previewUrl: 'https://django.hotunix.com/polls/1/',
+    previewUrl: 'https://django.setter.lv/polls/1/',
   },
   {
     id: 5,
     description: '',
     image: '/5.jpg',
     // gitUrl: '/',
-    previewUrl: 'https://django.hotunix.com/polls/1/results/',
+    previewUrl: 'https://django.setter.lv/polls/1/results/',
   },
   {
     id: 6,
     description: '',
     image: '/6.jpg',
     // gitUrl: '/',
-    previewUrl: 'https://django.hotunix.com/admin/',
+    previewUrl: 'https://django.setter.lv/admin/',
   },
 ];
 

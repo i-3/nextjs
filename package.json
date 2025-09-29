@@ -23,10 +23,10 @@
     "bcrypt": "6.0.0",
     "class-variance-authority": "0.7.1",
     "dotenv": "17.2.2",
-    "framer-motion": "12.23.20",
-    "groq-sdk": "0.32.0",
+    "framer-motion": "12.23.22",
+    "groq-sdk": "0.33.0",
     "lucide-react": "0.544.0",
-    "motion": "12.23.20",
+    "motion": "12.23.22",
     "next": "15.5.4",
     "next-intl": "4.3.9",
     "next-themes": "0.4.6",
@@ -35,8 +35,8 @@
     "react": "19.1.1",
     "react-dom": "19.1.1",
     "react-hook-form": "7.63.0",
-    "react-router-dom": "7.9.1",
-    "resend": "6.1.0",
+    "react-router-dom": "7.9.3",
+    "resend": "6.1.1",
     "tailwind-merge": "3.3.1",
     "tailwindcss": "4.1.13",
     "tailwindcss-animate": "1.0.7",
@@ -48,7 +48,7 @@
     "@types/dom-speech-recognition": "0.0.6",
     "@types/node": "24.5.2",
     "@types/pg": "8.15.5",
-    "@types/react": "19.1.13",
+    "@types/react": "19.1.15",
     "@types/react-dom": "19.1.9"
   }
 }
