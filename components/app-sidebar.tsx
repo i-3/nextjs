@@ -32,11 +32,11 @@ const items = [
     url: "/translate",
     icon: Languages,
   },
-  {
-    title: "Chat with AI",
-    url: "/chat",
-    icon: MessagesSquare,
-  },
+  // {
+  //   title: "Chat with AI",
+  //   url: "/chat",
+  //   icon: MessagesSquare,
+  // },
 ];
 
 export function AppSidebar() {
