@@ -1,4 +1,4 @@
-import { Home, Languages, MessagesSquare, Table2 } from 'lucide-react';
+import { Home, Languages, MessagesSquare, Table2 } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -11,30 +11,30 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarSeparator,
-} from '@/components/ui/sidebar';
-import { ModeToggle } from './mode-toggle';
-import React from 'react';
-import Clock from './clock';
+} from "@/components/ui/sidebar";
+import { ModeToggle } from "./mode-toggle";
+import React from "react";
+import Clock from "./clock";
 
 const items = [
   {
-    title: 'Home',
-    url: '/',
+    title: "Home",
+    url: "/",
     icon: Home,
   },
   {
-    title: 'Applications',
-    url: '/applications',
+    title: "Applications",
+    url: "/applications",
     icon: Table2,
   },
   {
-    title: 'AI translator',
-    url: '/translate',
+    title: "AI translator",
+    url: "/translate",
     icon: Languages,
   },
   {
-    title: 'Chat with AI',
-    url: '/chat',
+    title: "Chat with AI",
+    url: "/chat",
     icon: MessagesSquare,
   },
 ];
@@ -44,20 +44,20 @@ export function AppSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader className='items-end'>
+      <SidebarHeader className="items-end">
         <ModeToggle />
       </SidebarHeader>
 
       <SidebarSeparator />
 
-      <SidebarContent className=''>
+      <SidebarContent className="">
         <SidebarGroup>
           {/* <SidebarGroupLabel></SidebarGroupLabel> */}
 
           <SidebarGroupContent>
             <SidebarMenu>
               {items.map((item) => (
-                <SidebarMenuItem key={item.title} className='my-2'>
+                <SidebarMenuItem key={item.title} className="my-2">
                   {/* <SidebarMenuButton asChild isActive={pathname === item.url}> */}
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
@@ -79,15 +79,7 @@ export function AppSidebar() {
 
       <SidebarSeparator />
 
-      <SidebarFooter className='flex-row justify-end items-center'>
-        <a
-          href='https://freedns.afraid.org'
-          target='_blank'
-          className='text-primary hover:underline text-sm py-4'
-        >
-          Free DNS
-        </a>
-
+      <SidebarFooter className="flex-row justify-end items-center">
         {/* <Auth /> */}
       </SidebarFooter>
     </Sidebar>
