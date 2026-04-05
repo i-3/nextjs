@@ -1,0 +1,25 @@
+services:
+  db:
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: iurii
+      POSTGRES_PASSWORD: q
+      POSTGRES_DB: iurii
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://iurii:q@db:5432/iurii
+    depends_on:
+      - db
+
+volumes:
+  pgdata:

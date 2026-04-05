@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Mic, MicOff } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { Mic, MicOff } from "lucide-react";
+import { useState, useRef } from "react";
 
 export default function Page() {
-  const recognitionRef = useRef<SpeechRecognition>(null);
+  const recognitionRef = useRef<any>(null);
 
   const [isActive, setIsActive] = useState<boolean>(false);
   const [text, setText] = useState<string>();
@@ -12,7 +12,7 @@ export default function Page() {
   const [voices, setVoices] = useState<Array<SpeechSynthesisVoice>>();
   const [voice, setVoice] = useState<SpeechSynthesisVoice>();
   const [languages, setLanguages] = useState<String[]>([]);
-  const [language, setLanguage] = useState('en-US');
+  const [language, setLanguage] = useState("en-US");
 
   function setSpeech() {
     return new Promise<Array<SpeechSynthesisVoice>>(function (resolve) {
@@ -49,13 +49,16 @@ export default function Page() {
       return;
     }
 
-    speak(' ');
+    speak(" ");
 
     const SpeechRecognition =
-      window.SpeechRecognition || window.webkitSpeechRecognition;
+      (window as any).SpeechRecognition ||
+      (window as any).webkitSpeechRecognition;
 
-    recognitionRef.current = new SpeechRecognition();
-    recognitionRef.current.lang = language;
+    if (SpeechRecognition) {
+      recognitionRef.current = new SpeechRecognition();
+      recognitionRef.current.lang = language;
+    }
 
     recognitionRef.current.onstart = function () {
       setIsActive(true);
@@ -64,13 +67,13 @@ export default function Page() {
       setIsActive(false);
     };
 
-    recognitionRef.current.onresult = async function (event) {
+    recognitionRef.current.onresult = async function (event: any) {
       const transcript = event.results[0][0].transcript;
 
       setText(transcript);
 
-      const results = await fetch('/api/translate', {
-        method: 'POST',
+      const results = await fetch("/api/translate", {
+        method: "POST",
         body: JSON.stringify({
           text: transcript,
           language: voice?.lang,
@@ -96,16 +99,16 @@ export default function Page() {
   }
 
   return (
-    <main className='w-full pt-16'>
+    <main className="w-full pt-16">
       <div
-        className=' border flex flex-col max-w-md
-      mx-auto rounded-md p-4'
+        className=" border flex flex-col max-w-md
+      mx-auto rounded-md p-4"
       >
-        <div className='border p-4 rounded-md text-sm'>
+        <div className="border p-4 rounded-md text-sm">
           Select the language you will speak
           <select
-            className=' bg-muted mt-2 text-[.7rem] rounded-sm p-2 mr-32'
-            name='language'
+            className=" bg-muted mt-2 text-[.7rem] rounded-sm p-2 mr-32"
+            name="language"
             value={language}
             onChange={(event) => setLanguage(event.target.value)}
           >
@@ -115,11 +118,11 @@ export default function Page() {
           </select>
         </div>
 
-        <div className='mt-4 border p-4 rounded-md text-sm'>
+        <div className="mt-4 border p-4 rounded-md text-sm">
           Select the voice that will speak the translation
           <select
-            className='bg-muted mt-2 text-[.7rem] rounded-sm p-2 '
-            name='voice'
+            className="bg-muted mt-2 text-[.7rem] rounded-sm p-2 "
+            name="voice"
             value={voice?.lang}
             onChange={(event) => {
               // console.log(event.target.value);
@@ -140,21 +143,21 @@ export default function Page() {
         <button
           className={`mt-4 text-white flex items-center justify-center
             mx-auto w-24 h-24 font-semibold text-sm  rounded-full  ${
-              isActive ? ' bg-red-500' : 'hover:bg-red-900 bg-red-950'
+              isActive ? " bg-red-500" : "hover:bg-red-900 bg-red-950"
             }`}
           onClick={handleOnRecord}
         >
           {isActive ? <Mic /> : <MicOff />}
         </button>
 
-        <div className='flex flex-col mt-4'>
-          <div className=' border w-72 p-2 rounded-md self-end'>
-            <p className=' text-primary'>What you said:</p>
+        <div className="flex flex-col mt-4">
+          <div className=" border w-72 p-2 rounded-md self-end">
+            <p className=" text-primary">What you said:</p>
             {text}
           </div>
 
-          <div className=' border max-w-72 mt-4 p-2 rounded-md'>
-            <p className='text-primary'>What Groq translated:</p>
+          <div className=" border max-w-72 mt-4 p-2 rounded-md">
+            <p className="text-primary">What Groq translated:</p>
             {translation}
           </div>
         </div>
