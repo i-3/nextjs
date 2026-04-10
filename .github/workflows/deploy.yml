@@ -73,7 +73,9 @@ jobs:
                   - .env
                 depends_on:
                   - db
-                # Просто запускаем, Docker сам подсунет переменные из env_file внутрь
+                environment:
+                  # Принудительно вытаскиваем URL из .env для Prisma
+                  DATABASE_URL: "postgresql://iurii:q@db:5432/iurii"
                 command: sh -c "npx prisma db push && node server.js"
             volumes:
               pgdata:
