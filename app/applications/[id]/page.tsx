@@ -1,7 +1,9 @@
-import { notFound } from 'next/navigation';
-import Breadcrumbs from '@/app/ui/breadcrumbs';
-import { pool } from '../../../db';
-import Application from '../application';
+import { notFound } from "next/navigation";
+import Breadcrumbs from "@/app/ui/breadcrumbs";
+import { pool } from "../../../db";
+import Application from "../application";
+
+export const dynamic = "force-dynamic";
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   async function fetchApplicationByID(id: string) {
@@ -12,8 +14,8 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
       return data.rows[0];
     } catch (error) {
-      console.error('Database Error:', error);
-      throw new Error('Failed to fetch application.');
+      console.error("Database Error:", error);
+      throw new Error("Failed to fetch application.");
     }
   }
 
@@ -21,9 +23,9 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
 
   const params = await props.params;
 
-  if (params.id == '-') {
+  if (params.id == "-") {
     application = {
-      id: '-',
+      id: "-",
     };
   } else {
     application = await fetchApplicationByID(params.id);
@@ -33,12 +35,12 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   }
 
   return (
-    <main className=' mt-48 max-w-md mx-auto px-4'>
+    <main className=" mt-48 max-w-md mx-auto px-4">
       <Breadcrumbs
         breadcrumbs={[
-          { label: 'Applications', href: '/applications' },
+          { label: "Applications", href: "/applications" },
           {
-            label: 'Edit Application',
+            label: "Edit Application",
             href: `/${params.id}`,
             active: true,
           },
