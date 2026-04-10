@@ -39,20 +39,20 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            # Создаем папку проекта, если её нет
             mkdir -p ~/nextjs-app
             cd ~/nextjs-app
 
-            # Сохраняем переменные окружения из секретов GitHub в файл .env
-            echo "${{ secrets.ENV_FILE }}" > .env
+            # Используем одинарные кавычки для защиты содержимого секрета
+            cat << 'EOF' > .env
+            ${{ secrets.ENV_FILE }}
+            EOF
 
-            # Логинимся в реестр GitHub на вашем сервере
+            # Логинимся
             echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-            # Скачиваем обновленный образ
+            # Остальное без изменений...
             docker pull ghcr.io/${{ github.repository }}:latest
 
-            # Генерируем docker-compose.yml на лету
             cat <<EOF > docker-compose.yml
             services:
               db:
@@ -64,7 +64,6 @@ jobs:
                   POSTGRES_DB: iurii
                 volumes:
                   - pgdata:/var/lib/postgresql/data
-              
               web:
                 image: ghcr.io/${{ github.repository }}:latest
                 restart: always
@@ -75,13 +74,9 @@ jobs:
                 depends_on:
                   - db
                 command: sh -c "npx prisma db push && node server.js"
-
             volumes:
               pgdata:
             EOF
 
-            # Перезапускаем проект
             docker compose up -d
-
-            # Удаляем старые ненужные образы (чистим место на диске)
             docker image prune -f
