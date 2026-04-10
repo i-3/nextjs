@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write # Даем право записывать образ в GitHub Packages
-
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,14 +22,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+        uses: docker/build-push-action@v6 # Обновил до v6
         with:
           context: .
           push: true
-          # Имя образа будет: ghcr.io/ваш_ник/название_репо:latest
           tags: ghcr.io/${{ github.repository }}:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
   deploy:
     runs-on: ubuntu-latest
