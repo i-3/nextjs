@@ -68,12 +68,13 @@ jobs:
                 image: ghcr.io/${{ github.repository }}:latest
                 restart: always
                 ports:
-                  - "80:3000"
+                  - "3000:3000"
                 env_file:
                   - .env
                 depends_on:
                   - db
-                command: sh -c "npx prisma db push && node server.js"
+                # ИЗМЕНЕНИЕ ЗДЕСЬ: добавляем экспорт переменных из .env перед запуском
+                command: sh -c "export $(grep -v '^#' .env | xargs) && npx prisma db push && node server.js"
             volumes:
               pgdata:
             EOF
