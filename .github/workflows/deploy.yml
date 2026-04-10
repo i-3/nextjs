@@ -73,7 +73,7 @@ jobs:
                   - .env
                 depends_on:
                   - db
-                # Передаем DATABASE_URL напрямую в процесс npx
+                # Передаем переменную прямо в строку запуска
                 command: >
                   sh -c "DATABASE_URL=postgresql://iurii:q@db:5432/iurii npx prisma db push && 
                   node server.js"
