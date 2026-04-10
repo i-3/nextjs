@@ -69,14 +69,16 @@ jobs:
                 restart: always
                 ports:
                   - "3000:3000"
-                env_file:
-                  - .env
+                # Мы НЕ используем env_file здесь, а прописываем напрямую в environment
+                environment:
+                  DATABASE_URL: "postgresql://iurii:q@db:5432/iurii"
                 depends_on:
                   - db
-                environment:
-                  # Принудительно вытаскиваем URL из .env для Prisma
-                  DATABASE_URL: "postgresql://iurii:q@db:5432/iurii"
-                command: sh -c "npx prisma db push && node server.js"
+                # ХИТРОСТЬ: создаем временный .env прямо внутри контейнера перед запуском prisma
+                command: >
+                  sh -c "echo 'DATABASE_URL=postgresql://iurii:q@db:5432/iurii' > .env && 
+                  npx prisma db push && 
+                  node server.js"
             volumes:
               pgdata:
             EOF
