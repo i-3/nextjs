@@ -64,12 +64,11 @@ jobs:
                   - .env
                 depends_on:
                   - db
-                # Добавляем POSTGRES_URL, которую ждет твой prisma.config.ts
                 environment:
-                  - POSTGRES_URL=postgresql://iurii:q@db:5432/iurii
+                  - DATABASE_URL=postgresql://iurii:q@db:5432/iurii
                 command: >
                   sh -c "sleep 5 && 
-                  POSTGRES_URL=postgresql://iurii:q@db:5432/iurii npx prisma db push && 
+                  DATABASE_URL=postgresql://iurii:q@db:5432/iurii npx prisma db push && 
                   node server.js"
 
             volumes:
