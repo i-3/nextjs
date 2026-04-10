@@ -1,7 +1,9 @@
-import { NextResponse } from 'next/server';
-import Groq from 'groq-sdk';
+import { NextResponse } from "next/server";
+import Groq from "groq-sdk";
 
-const groq = new Groq();
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY || "dummy_key_for_build",
+});
 
 export async function POST(request: Request) {
   const { text, language } = await request.json();
@@ -9,7 +11,7 @@ export async function POST(request: Request) {
   const chatCompletion = await groq.chat.completions.create({
     messages: [
       {
-        role: 'system',
+        role: "system",
         content: `
           You will be provided with a sentence. Your tasks are to:
           - Detect what language the sentence is in
@@ -18,11 +20,11 @@ export async function POST(request: Request) {
         `,
       },
       {
-        role: 'user',
+        role: "user",
         content: text,
       },
     ],
-    model: 'llama-3.3-70b-versatile',
+    model: "llama-3.3-70b-versatile",
 
     //
     // Optional parameters
