@@ -73,8 +73,8 @@ jobs:
                   - .env
                 depends_on:
                   - db
-                # ИЗМЕНЕНИЕ ЗДЕСЬ: добавляем экспорт переменных из .env перед запуском
-                command: sh -c "export $(grep -v '^#' .env | xargs) && npx prisma db push && node server.js"
+                # Просто запускаем, Docker сам подсунет переменные из env_file внутрь
+                command: sh -c "npx prisma db push && node server.js"
             volumes:
               pgdata:
             EOF
