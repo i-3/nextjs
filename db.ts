@@ -1,6 +1,6 @@
-import pg from 'pg';
+import pg from "pg";
 const { Pool } = pg;
-require('dotenv').config();
+require("dotenv").config();
 
 export const pool = new Pool({
   connectionString: process.env.POSTGRES_URL,
