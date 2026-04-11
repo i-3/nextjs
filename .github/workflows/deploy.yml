@@ -84,10 +84,13 @@ jobs:
             ${{ secrets.ENV_FILE }}
             ENV_EOF
 
-            echo "=== 3. Подтягиваем образ ==="
+            echo "=== 3. Входим в GitHub Container Registry ==="
+            echo "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
+
+            echo "=== 4. Подтягиваем образ ==="
             docker pull ghcr.io/${{ github.repository_owner }}/nextjs-app:latest
 
-            echo "=== 4. Перезапускаем ==="
+            echo "=== 5. Перезапускаем ==="
             docker compose down --remove-orphans || true
             docker compose up -d --force-recreate
 
