@@ -13,19 +13,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build Docker image
+        run: docker build -t app:latest .
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v5
+      - name: Save Docker image to tar
+        run: docker save app:latest -o app.tar
+
+      - name: Copy image to server
+        uses: appleboy/scp-action@v0.1.4
         with:
-          context: .
-          push: true
-          tags: ghcr.io/${{ github.repository_owner }}/nextjs-app:latest
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          source: app.tar
+          target: ~/nextjs-app/
 
       - name: Deploy to OCI via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -59,7 +60,7 @@ jobs:
                   retries: 5
 
               web:
-                image: ghcr.io/${{ github.repository_owner }}/nextjs-app:latest
+                image: app:latest
                 restart: always
                 ports:
                   - "3000:3000"
@@ -84,13 +85,10 @@ jobs:
             ${{ secrets.ENV_FILE }}
             ENV_EOF
 
-            echo "=== 3. Входим в GitHub Container Registry ==="
-            printf '%s' "${{ secrets.GHCR_PAT }}" | docker login ghcr.io -u "${{ github.repository_owner }}" --password-stdin
+            echo "=== 3. Загружаем образ из tar ==="
+            docker load < app.tar
 
-            echo "=== 4. Подтягиваем образ ==="
-            docker pull ghcr.io/${{ github.repository_owner }}/nextjs-app:latest
-
-            echo "=== 5. Перезапускаем ==="
+            echo "=== 4. Перезапускаем ==="
             docker compose down --remove-orphans || true
             docker compose up -d --force-recreate
 
