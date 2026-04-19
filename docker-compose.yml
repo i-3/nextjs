@@ -10,6 +10,8 @@ services:
       - pgdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+      - shared_net
 
   web:
     image: ghcr.io/i-3/nextjs-app:latest
@@ -22,10 +24,18 @@ services:
       - db
     environment:
       - DATABASE_URL=postgresql://iurii:q@db:5432/iurii
+    networks:
+      - shared_net
     command: >
       sh -c "sleep 5 && 
       PGPASSWORD=q psql -h db -U iurii -d iurii -c 'CREATE TABLE IF NOT EXISTS applications (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), employer TEXT, vacancy TEXT, state TEXT, date DATE);' && 
+      PGPASSWORD=q psql -h db -U iurii -d postgres -tc \"SELECT 1 FROM pg_database WHERE datname = 'directus'\" | grep -q 1 || 
+      PGPASSWORD=q psql -h db -U iurii -d postgres -c \"CREATE DATABASE directus;\" && 
       node server.js"
+
+networks:
+  shared_net:
+    name: shared_net
 
 volumes:
   pgdata:
