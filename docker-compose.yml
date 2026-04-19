@@ -12,8 +12,8 @@ services:
     ports:
       - "5432:5432"
     networks:
-      shared_net:
-        # Привязка к нашей сети
+      default:
+        # МЫ ПОДМЕНЯЕМ ДЕФОЛТНУЮ СЕТЬ
         aliases:
           - db
 
@@ -27,8 +27,8 @@ services:
     depends_on:
       - db
     networks:
-      shared_net:
-        # Привязка к нашей сети
+      default:
+        # И ЗДЕСЬ ТОЖЕ
         aliases:
           - web
     environment:
@@ -36,7 +36,7 @@ services:
     command: >
       sh -c "sleep 5 &&  PGPASSWORD=q psql -h shared-db-container -U iurii -d iurii -c 'CREATE TABLE IF NOT EXISTS applications (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), employer TEXT, vacancy TEXT, state TEXT, date DATE);' &&  PGPASSWORD=q psql -h shared-db-container -U iurii -d postgres -tc \"SELECT 1 FROM pg_database WHERE datname = 'directus'\" | grep -q 1 ||  PGPASSWORD=q psql -h shared-db-container -U iurii -d postgres -c \"CREATE DATABASE directus;\" &&  node server.js"
 
+# ВОТ ЗДЕСЬ САМАЯ ВАЖНАЯ ЧАСТЬ:
 networks:
-  shared_net:
-    name: shared_net # Это ГЛАВНОЕ: заставляет Docker использовать имя БЕЗ префикса папки
-    driver: bridge
+  default:
+    name: shared_net # МЫ ГОВОРИМ: "Считай дефолтную сеть этого проекта сетью shared_net"
