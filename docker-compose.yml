@@ -1,7 +1,7 @@
 services:
   db:
     image: postgres:15-alpine
-    container_name: shared-db-container  # Фиксируем имя контейнера
+    container_name: shared-db-container
     restart: always
     environment:
       POSTGRES_USER: iurii
@@ -13,8 +13,9 @@ services:
       - "5432:5432"
     networks:
       shared_net:
+        # Привязка к нашей сети
         aliases:
-          - db  # Это позволит другим контейнерам видеть его просто как "db"
+          - db
 
   web:
     image: ghcr.io/i-3/nextjs-app:latest
@@ -25,21 +26,17 @@ services:
       - .env
     depends_on:
       - db
-    environment:
-      - DATABASE_URL=postgresql://iurii:q@db:5432/iurii
     networks:
-      - shared_net
+      shared_net:
+        # Привязка к нашей сети
+        aliases:
+          - web
+    environment:
+      - DATABASE_URL=postgresql://iurii:q@shared-db-container:5432/iurii
     command: >
-      sh -c "sleep 5 && 
-      PGPASSWORD=q psql -h db -U iurii -d iurii -c 'CREATE TABLE IF NOT EXISTS applications (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), employer TEXT, vacancy TEXT, state TEXT, date DATE);' && 
-      PGPASSWORD=q psql -h db -U iurii -d postgres -tc \"SELECT 1 FROM pg_database WHERE datname = 'directus'\" | grep -q 1 || 
-      PGPASSWORD=q psql -h db -U iurii -d postgres -c \"CREATE DATABASE directus;\" && 
-      node server.js"
+      sh -c "sleep 5 &&  PGPASSWORD=q psql -h shared-db-container -U iurii -d iurii -c 'CREATE TABLE IF NOT EXISTS applications (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), employer TEXT, vacancy TEXT, state TEXT, date DATE);' &&  PGPASSWORD=q psql -h shared-db-container -U iurii -d postgres -tc \"SELECT 1 FROM pg_database WHERE datname = 'directus'\" | grep -q 1 ||  PGPASSWORD=q psql -h shared-db-container -U iurii -d postgres -c \"CREATE DATABASE directus;\" &&  node server.js"
 
 networks:
   shared_net:
-    name: shared_net  # ГАРАНТИРУЕТ имя сети без префиксов
+    name: shared_net # Это ГЛАВНОЕ: заставляет Docker использовать имя БЕЗ префикса папки
     driver: bridge
-
-volumes:
-  pgdata:
