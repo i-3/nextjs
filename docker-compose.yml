@@ -22,13 +22,15 @@ services:
     environment:
       - DATABASE_URL=postgresql://iurii:q@127.0.0.1:5432/iurii
     command: >
-      sh -c "
+      sh -c " until PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d postgres -c 'SELECT 1'; do 
+        sleep 1; 
+      done;
 
-      until PGPASSWORD=q psql -U iurii -d postgres -c 'SELECT 1' > /dev/null 2>&1; do sleep 1; done;
+      PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d postgres -tc \"SELECT 1 FROM pg_database WHERE datname = 'directus'\" | grep -q 1 || \
 
-      PGPASSWORD=q psql -U iurii -d postgres -tc \"SELECT 1 FROM pg_database WHERE datname = 'directus'\" | grep -q 1 || PGPASSWORD=q psql -U iurii -d postgres -c 'CREATE DATABASE directus;';
+      PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d postgres -c 'CREATE DATABASE directus;';
 
-      PGPASSWORD=q psql -U iurii -d iurii -c 'CREATE TABLE IF NOT EXISTS applications (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), employer TEXT, vacancy TEXT, state TEXT, date DATE);';
+      PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d iurii -c 'CREATE TABLE IF NOT EXISTS applications (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), employer TEXT, vacancy TEXT, state TEXT, date DATE);';
 
       node server.js "
 
