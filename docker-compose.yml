@@ -3,7 +3,7 @@ services:
     image: postgres:15-alpine
     container_name: shared-db-container
     restart: always
-    network_mode: "host" # Контейнер использует порты сервера напрямую
+    network_mode: "host"
     environment:
       POSTGRES_USER: iurii
       POSTGRES_PASSWORD: q
@@ -14,7 +14,7 @@ services:
   web:
     image: ghcr.io/i-3/nextjs-app:latest
     restart: always
-    network_mode: "host" # Теперь Next.js доступен на порту 3000 сервера
+    network_mode: "host"
     env_file:
       - .env
     depends_on:
@@ -22,7 +22,13 @@ services:
     environment:
       - DATABASE_URL=postgresql://iurii:q@127.0.0.1:5432/iurii
     command: >
-      sh -c " sleep 5; PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d postgres -tAc 'SELECT 1 FROM pg_database WHERE datname = ''directus''' | grep -q 1 || PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d postgres -c 'CREATE DATABASE directus;'; PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d iurii -c 'CREATE TABLE IF NOT EXISTS applications (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), employer TEXT, vacancy TEXT, state TEXT, date DATE);'; node server.js "
+      sh -c " sleep 5;
+
+      PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d postgres -tAc 'SELECT 1 FROM pg_database WHERE datname = ''directus''' | grep -q 1 || PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d postgres -c 'CREATE DATABASE directus;';
+
+      PGPASSWORD=q psql -h 127.0.0.1 -U iurii -d iurii -c 'CREATE TABLE IF NOT EXISTS applications (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), employer TEXT, vacancy TEXT, state TEXT, date DATE);';
+
+      node server.js "
 
 volumes:
   pgdata:
