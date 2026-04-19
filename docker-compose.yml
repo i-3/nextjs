@@ -35,7 +35,7 @@ services:
 
 networks:
   shared_net:
-    name: shared_net
+    external: true
 
 volumes:
   pgdata:
