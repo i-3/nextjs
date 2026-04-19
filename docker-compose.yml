@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres:15-alpine
+    container_name: shared-db-container  # Фиксируем имя контейнера
     restart: always
     environment:
       POSTGRES_USER: iurii
@@ -11,7 +12,9 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - shared_net
+      shared_net:
+        aliases:
+          - db  # Это позволит другим контейнерам видеть его просто как "db"
 
   web:
     image: ghcr.io/i-3/nextjs-app:latest
@@ -35,7 +38,8 @@ services:
 
 networks:
   shared_net:
-    external: true
+    name: shared_net  # ГАРАНТИРУЕТ имя сети без префиксов
+    driver: bridge
 
 volumes:
   pgdata:
