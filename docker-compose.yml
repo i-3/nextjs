@@ -13,7 +13,7 @@ services:
       - pgdata:/var/lib/postgresql/data
 
   web:
-    image: ghcr.io/i-3/nextjs-app:latest
+    image: app:latest
     restart: always
     ports:
       - "3000:3000"
