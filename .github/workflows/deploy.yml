@@ -19,14 +19,15 @@ jobs:
       - name: Save Docker image to tar
         run: docker save app:latest -o app.tar
 
-      - name: Copy image to server
+      - name: Copy files to server
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          source: app.tar
-          target: ~/nextjs-app/
+          # Теперь копируем и образ, и сам файл docker-compose.yml из репозитория!
+          source: "app.tar,docker-compose.yml"
+          target: "~/nextjs-app/"
 
       - name: Deploy to OCI via SSH
         uses: appleboy/ssh-action@v1.0.3
@@ -36,63 +37,18 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             set -e
-
             cd ~/nextjs-app
 
-            echo "=== 1. Перезаписываем docker-compose.yml ==="
-            cat > docker-compose.yml << 'EOF'
-            services:
-              db:
-                image: postgres:15-alpine
-                restart: always
-                environment:
-                  POSTGRES_USER: iurii
-                  POSTGRES_PASSWORD: q
-                  POSTGRES_DB: iurii
-                volumes:
-                  - pgdata:/var/lib/postgresql/data
-                ports:
-                  - "5432:5432"
-                healthcheck:
-                  test: ["CMD-SHELL", "pg_isready -U iurii"]
-                  interval: 5s
-                  timeout: 5s
-                  retries: 5
-
-              web:
-                image: app:latest
-                restart: always
-                ports:
-                  - "3000:3000"
-                env_file:
-                  - .env
-                depends_on:
-                  db:
-                    condition: service_healthy
-                environment:
-                  - DATABASE_URL=postgresql://iurii:q@db:5432/iurii
-                command: >
-                  sh -c "sleep 10 && 
-                  PGPASSWORD=q psql -h db -U iurii -d iurii -c 'CREATE TABLE IF NOT EXISTS applications (id UUID PRIMARY KEY DEFAULT gen_random_uuid(), employer TEXT, vacancy TEXT, state TEXT, date DATE);' && 
-                  node server.js"
-
-            volumes:
-              pgdata:
-            EOF
-
-            echo "=== 2. Создаём .env (безопасный способ) ==="
+            echo "=== 1. Создаём .env из секретов ==="
             cat > .env << 'ENV_EOF'
             ${{ secrets.ENV_FILE }}
             ENV_EOF
 
-            echo "=== 3. Загружаем образ из tar ==="
+            echo "=== 2. Загружаем свежий образ ==="
             docker load < app.tar
 
-            echo "=== 4. Перезапускаем ==="
+            echo "=== 3. Перезапускаем (используя скопированный docker-compose.yml) ==="
             docker compose down --remove-orphans || true
             docker compose up -d --force-recreate
 
-            echo "=== 5. Статус ==="
-            docker compose ps -a
-            docker compose logs web --tail=100 || true
             echo "✅ Деплой завершён!"
